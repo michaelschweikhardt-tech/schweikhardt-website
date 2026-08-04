@@ -89,6 +89,32 @@ section{padding:96px 0 0}
 .werk-mehr{margin-top:40px}
 .werk-mehr a{font-family:'IBM Plex Mono';font-size:13px;color:var(--tinte);text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:3px}
 
+/* Referenz-Cases (Duotone-Kacheln) */
+.case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.case{display:flex;flex-direction:column;background:#E7DFCC;text-decoration:none;transition:transform .15s}
+a.case:hover{transform:translateY(-5px)}
+.case-tile{aspect-ratio:4/5;position:relative;display:flex;align-items:flex-end;padding:20px;overflow:hidden}
+.tile-teal{background:linear-gradient(165deg,var(--teal) 0%,var(--teal-tief) 78%)}
+.tile-orange{background:linear-gradient(165deg,var(--orange) 0%,#A64C18 82%)}
+.case-tile::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.13) 0 2px,transparent 2px 4px)}
+.case-name{position:relative;z-index:2;font-family:'Anton';text-transform:uppercase;color:var(--papier);font-size:23px;line-height:1;letter-spacing:.01em}
+.case-body{padding:15px 16px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+.case-disz{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.06em;color:var(--teal);text-transform:uppercase}
+.case-res{font-size:14px;color:var(--tinte);font-weight:500;line-height:1.4}
+.case-link{margin-top:auto;font-family:'IBM Plex Mono';font-size:11.5px;color:var(--grau);padding-top:6px}
+a.case:hover .case-link{color:var(--orange)}
+.anon{font-size:14.5px;color:var(--grau);margin-top:26px;max-width:70ch;line-height:1.6}
+.anon b{color:var(--tinte);font-weight:600}
+
+/* Klassiker-Beleg-Streifen */
+.klassiker{margin-top:40px;border-top:1px solid var(--linie);padding-top:22px}
+.klassiker .l{font-family:'IBM Plex Mono';font-size:11.5px;color:var(--grau);margin-bottom:12px;letter-spacing:.04em}
+.klassiker .n{font-size:17px;color:var(--grau);line-height:1.95}
+.klassiker .n a{color:var(--tinte);text-decoration:none;border-bottom:1.5px solid var(--orange);font-weight:600}
+.klassiker .n a:hover{color:var(--orange)}
+.klassiker .n i{font-style:normal;color:var(--linie);padding:0 7px}
+.klassiker .n b{color:var(--tinte);font-weight:600}
+
 /* Bilanz */
 .bilanz{margin-top:96px;border-top:2px solid var(--tinte);border-bottom:2px solid var(--tinte);display:grid;grid-template-columns:repeat(4,1fr)}
 .b{padding:32px 26px;border-right:1px solid var(--linie)}
@@ -180,6 +206,10 @@ footer a{text-decoration:none;color:#c8c4b8}
   .werk-a{grid-column:span 12}
   .werk-b{grid-column:span 7;margin-top:0}
   .werk-c{grid-column:span 5;margin-top:0}
+  .case-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .case-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -235,18 +265,53 @@ footer a{text-decoration:none;color:#c8c4b8}
 </div></header>
 
 <section id="arbeiten"><div class="wrap">
-  <div class="s-kopf"><h2>Ausgewählte Arbeiten</h2><div class="deko"></div><div class="nr">WERKSCHAU — PAID SOCIAL &amp; CREATIVES</div></div>
-  <div class="werk-grid">
-    <div class="werk werk-a"><div class="ph">[ Creative — Micky Oye ]</div></div>
-    <div class="werk werk-b"><div class="ph">[ Creative — Bridge &amp; Tunnel ]</div></div>
-    <div class="werk werk-c"><div class="ph">[ Creative — gigmit ]</div></div>
+  <div class="s-kopf"><h2>Ausgewählte Arbeiten</h2><div class="deko"></div><div class="nr">REFERENZEN — D2C · PAID SOCIAL · EMAIL</div></div>
+  <!-- ============================================================
+       REFERENZ HINZUFÜGEN / ÄNDERN:
+       Einen der Blöcke unten kopieren und Name, Disziplin, Ergebnis
+       (und ggf. den Link) ersetzen. Farbe: tile-teal ODER tile-orange.
+       MIT Case-Link  = <a class="case" href="...">   + Zeile <span class="case-link">
+       OHNE Case-Link = <div class="case">            (die case-link-Zeile weglassen)
+       ============================================================ -->
+  <div class="case-grid">
+
+    <div class="case">
+      <div class="case-tile tile-teal"><span class="case-name">Bridge &amp; Tunnel</span></div>
+      <div class="case-body">
+        <span class="case-disz">Paid Social · Creatives · Email</span>
+        <span class="case-res">Upcycling-Fashion aus Berlin — laufende Betreuung seit 2019.</span>
+      </div>
+    </div>
+
+    <a class="case" href="https://schweikhardt.de/2018/06/25/marketing-gigmit-2/" target="_blank" rel="noopener">
+      <div class="case-tile tile-orange"><span class="case-name">gigmit</span></div>
+      <div class="case-body">
+        <span class="case-disz">Paid Social · CMO</span>
+        <span class="case-res">16× Nutzerwachstum, CPL unter 5 € in der Wachstumsphase.</span>
+        <span class="case-link">Case ansehen →</span>
+      </div>
+    </a>
+
+    <div class="case">
+      <div class="case-tile tile-teal"><span class="case-name">Micky Oye</span></div>
+      <div class="case-body">
+        <span class="case-disz">Meta Ads · Beratung</span>
+        <span class="case-res">Premium-Fashion-Label — Kampagnensteuerung &amp; Creative-Beratung.</span>
+      </div>
+    </div>
+
+    <a class="case" href="https://schweikhardt.de/2020/08/21/email-marketing-fuer-gaiastore-com/" target="_blank" rel="noopener">
+      <div class="case-tile tile-orange"><span class="case-name">Gaiastore</span></div>
+      <div class="case-body">
+        <span class="case-disz">Email-Marketing</span>
+        <span class="case-res">Nachhaltige Produkte — Newsletter &amp; Automation.</span>
+        <span class="case-link">Case ansehen →</span>
+      </div>
+    </a>
+
   </div>
-  <div class="werk-grid" style="margin-top:12px">
-    <div class="werk-cap" style="grid-column:span 5"><b>Micky Oye</b> — Premium Fashion · Meta Ads &amp; Beratung</div>
-    <div class="werk-cap" style="grid-column:span 4"><b>Bridge &amp; Tunnel</b> — Upcycling Fashion · seit 2019</div>
-    <div class="werk-cap" style="grid-column:span 3"><b>gigmit</b> — CPL unter 5 €</div>
-  </div>
-  <div class="werk-mehr"><a href="#">Alle Referenzen ansehen →</a></div>
+
+  <p class="anon">Dazu vertrauliche Mandate über Agenturen — u. a. <b>Finanzcoaching: CPL 8–12 €</b> (qualifizierte Leads 35–60 €) — sowie Kampagnen in <b>20+ Branchen</b> von Spirituosen bis SaaS. Aus Vertraulichkeit ohne Namen.</p>
 
   <div class="bilanz">
     <div class="b"><div class="w">16<i>×</i></div><div class="k">NUTZERWACHSTUM ALS CMO · GIGMIT.COM — 4.000 → 65.000 ARTISTS. QUELLE: ARBEITSZEUGNIS.</div></div>
@@ -254,12 +319,23 @@ footer a{text-decoration:none;color:#c8c4b8}
     <div class="b"><div class="w">50K<i>€</i></div><div class="k">META-MONATSBUDGETS · AKTUELL FÜR BRANDS UND AGENTUREN GESTEUERT.</div></div>
     <div class="b"><div class="w">7<i>J.</i></div><div class="k">LAUFENDE BETREUUNG · BRIDGE &amp; TUNNEL. KUNDEN, DIE BLEIBEN.</div></div>
   </div>
+
+  <div class="klassiker">
+    <div class="l">AUCH FÜR — FRÜHERE KONZERN- UND DIGITALPROJEKTE (ÜBER AGENTUREN)</div>
+    <div class="n">
+      <a href="https://schweikhardt.de/2012/05/08/mobile-car-configurator-bmw/" target="_blank" rel="noopener">BMW</a><i>·</i>
+      <a href="https://schweikhardt.de/2012/09/03/app-developer-portal-vodafone/" target="_blank" rel="noopener">Vodafone</a><i>·</i>
+      <a href="https://schweikhardt.de/2013/03/01/website-relaunch-fuer-db-schenker/" target="_blank" rel="noopener">DB Schenker</a><i>·</i>
+      <a href="https://schweikhardt.de/2011/04/26/ipad-magazin-jazz-echo-universal-music/" target="_blank" rel="noopener">Universal Music</a><i>·</i>
+      <b>KPMG</b><i>·</i>Dresdner Bank<i>·</i>Daimler Financial Services<i>·</i>Europcar<i>·</i>Neckermann<i>·</i>Siemens<i>·</i>EADS<i>·</i>Cornelsen
+    </div>
+  </div>
 </div></section>
 
 <section id="leistungen"><div class="wrap">
   <div class="s-kopf"><h2>Leistungen</h2><div class="deko"></div><div class="nr">DREI WEGE DER ZUSAMMENARBEIT</div></div>
 
-  <a class="leistung" href="#">
+  <a class="leistung" href="#kontakt">
     <svg class="illu" viewBox="0 0 84 84">
       <!-- Megafon aus Formen -->
       <path d="M10 34 L44 22 L44 54 L10 42 Z" fill="#E2762D"/>
@@ -273,7 +349,7 @@ footer a{text-decoration:none;color:#c8c4b8}
     <span class="geh">→</span>
   </a>
 
-  <a class="leistung" href="#">
+  <a class="leistung" href="#kontakt">
     <svg class="illu" viewBox="0 0 84 84">
       <!-- Brief mit Swing-Linien -->
       <rect x="18" y="26" width="48" height="34" fill="#2E7D76"/>
@@ -287,7 +363,7 @@ footer a{text-decoration:none;color:#c8c4b8}
     <span class="geh">→</span>
   </a>
 
-  <a class="leistung" href="#">
+  <a class="leistung" href="#kontakt">
     <svg class="illu" viewBox="0 0 84 84">
       <!-- Dirigierstab & Rhythmus-Balken -->
       <rect x="12" y="52" width="9" height="20" fill="#2E7D76"/>
@@ -331,8 +407,8 @@ footer a{text-decoration:none;color:#c8c4b8}
   </div>
 
   <div class="kunden">
-    <div class="l">MARKEN &amp; STATIONEN</div>
-    <div class="n"><b>Bridge &amp; Tunnel</b><i>✦</i><b>Micky Oye</b><i>✦</i>Addition<i>✦</i>Baìge the Label<i>✦</i>Gaiastore<i>✦</i>Wildplastic<i>✦</i>Woodlike Ocean<i>✦</i><b>gigmit</b><i>✦</i>Masshoff Drums<i>✦</i><b>BMW</b><i>✦</i>Vodafone<i>✦</i><b>DB Schenker</b><i>✦</i>Universal Music<i>✦</i>KPMG<i>✦</i>Europcar</div>
+    <div class="l">NACHHALTIGE D2C-BRANDS &amp; PLATTFORMEN</div>
+    <div class="n"><b>Bridge &amp; Tunnel</b><i>✦</i><b>Micky Oye</b><i>✦</i>Addition Sustainable Apparel<i>✦</i>Baìge the Label<i>✦</i>Gaiastore<i>✦</i>Wildplastic<i>✦</i>Woodlike Ocean<i>✦</i>Masshoff Drums<i>✦</i><b>gigmit</b><i>✦</i>Buusenkollektiv e.&nbsp;V. <span style="font-size:12px;color:var(--grau)">(pro bono)</span></div>
   </div>
 </div></section>
 
@@ -352,7 +428,7 @@ footer a{text-decoration:none;color:#c8c4b8}
     <p>Ich habe als <b>Art Director</b> angefangen, als Anzeigen noch in Litho gingen. Seitdem habe ich jeden Umbruch mitgemacht und mitgebaut: Web, Mobile, Social, Performance — heute generative KI und eigene Tools.</p>
     <p>Und seit den 80ern stehe ich als <b>Sänger</b> auf der Bühne: Rockabilly, Rhythm &amp; Blues, Western Swing, Jazz.</p>
     <div class="jazzbox"><p>Gutes Marketing ist wie guter Swing: intelligent gemacht — aber tanzbar. Anspruchsvoll in der Substanz, mühelos im Auftritt.</p></div>
-    <p style="margin-top:26px"><a class="mehr" href="#">Mehr über meinen Weg →</a></p>
+    <p style="margin-top:26px"><a class="mehr" href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">Mehr über meinen Weg →</a></p>
   </div>
 </div></section>
 

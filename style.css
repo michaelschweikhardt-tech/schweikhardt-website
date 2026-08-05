@@ -16,13 +16,19 @@ a{color:inherit}
 /* Nav */
 nav{position:sticky;top:0;background:rgba(245,239,226,.92);backdrop-filter:blur(8px);z-index:50;border-bottom:2px solid var(--tinte)}
 .nav-i{display:flex;justify-content:space-between;align-items:center;height:70px}
-.marke{font-family:'IBM Plex Mono';font-size:13px;letter-spacing:.05em;text-decoration:none;font-weight:500}
-.marke b{color:var(--orange);font-weight:500}
-.nav-r{display:flex;gap:30px;align-items:center;font-family:'IBM Plex Mono';font-size:12.5px}
-.nav-r a{text-decoration:none;color:var(--grau)}
+.marke{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.marke img{height:26px;width:auto;display:block}
+.nav-r{display:flex;gap:23px;align-items:center;font-family:'IBM Plex Mono';font-size:12.5px}
+.nav-r a{text-decoration:none;color:var(--grau);white-space:nowrap}
 .nav-r a:hover{color:var(--tinte)}
 .nav-r a.cta{background:var(--tinte);color:var(--papier);padding:11px 20px;transition:background .15s}
 .nav-r a.cta:hover{background:var(--orange)}
+.navtog{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;z-index:60}
+.burger span{display:block;height:2.5px;width:25px;background:var(--tinte);border-radius:2px;transition:transform .2s,opacity .2s}
+.navtog:checked ~ .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.navtog:checked ~ .burger span:nth-child(2){opacity:0}
+.navtog:checked ~ .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
 /* Hero */
 .hero{padding:76px 0 0;position:relative;overflow:hidden}
@@ -235,6 +241,15 @@ footer a{text-decoration:none;color:#c8c4b8}
 @media(max-width:700px){
   .station{grid-template-columns:1fr;gap:10px}
 }
+/* Mobiles Menü */
+@media(max-width:900px){
+  .burger{display:flex}
+  .nav-r{position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--papier);border-bottom:2px solid var(--tinte);padding:6px 22px 18px;display:none;font-size:14.5px}
+  .navtog:checked ~ .nav-r{display:flex}
+  .nav-r a{padding:14px 2px;border-bottom:1px solid var(--linie);color:var(--tinte)}
+  .nav-r a.cta{margin-top:14px;text-align:center;padding:15px 20px;border-bottom:none;color:var(--papier)}
+}
+
 @media(max-width:960px){
   .wrap{padding:0 22px}
   .hero-grid,.saatori,.ueber{grid-template-columns:1fr}

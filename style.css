@@ -241,8 +241,24 @@ footer a{text-decoration:none;color:#c8c4b8}
 @media(max-width:700px){
   .station{grid-template-columns:1fr;gap:10px}
 }
+/* Vintage Studio (Creative-Säule) */
+.studio-lead{display:flex;gap:26px;align-items:flex-start;max-width:820px;margin-bottom:46px}
+.studio-lead p{color:var(--grau);font-size:17.5px}
+.studio-lead p b{color:var(--tinte);font-weight:600}
+.studio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.studio-c{background:#E7DFCC;padding:26px 22px 24px;display:flex;flex-direction:column;gap:15px}
+.studio-c .ic{width:60px;height:60px}
+.studio-c h3{font-family:'Anton';text-transform:uppercase;font-size:18px;line-height:1.15;letter-spacing:.01em}
+.studio-c .d{font-family:'IBM Plex Mono';font-size:11px;color:var(--teal);letter-spacing:.04em;text-transform:uppercase;line-height:1.7}
+.studio-cta{margin-top:36px;display:flex;justify-content:space-between;align-items:center;gap:22px;border-top:1px solid var(--linie);padding-top:22px;flex-wrap:wrap}
+.studio-cta .flag{font-size:15px;color:var(--grau);max-width:60ch}
+.studio-cta .flag b{color:var(--tinte);font-weight:600}
+.studio-cta a{font-family:'IBM Plex Mono';font-size:13px;color:var(--tinte);text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:3px;white-space:nowrap}
+.studio-cta a:hover{color:var(--orange)}
+
 /* Mobiles Menü */
 @media(max-width:900px){
+  .studio-grid{grid-template-columns:1fr 1fr}
   .burger{display:flex}
   .nav-r{position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--papier);border-bottom:2px solid var(--tinte);padding:6px 22px 18px;display:none;font-size:14.5px}
   .navtog:checked ~ .nav-r{display:flex}
@@ -268,4 +284,5 @@ footer a{text-decoration:none;color:#c8c4b8}
 }
 @media(max-width:560px){
   .case-grid{grid-template-columns:1fr}
+  .studio-grid{grid-template-columns:1fr}
 }

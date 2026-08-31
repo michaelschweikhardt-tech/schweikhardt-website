@@ -1,0 +1,20 @@
+# Eigene 404-Seite
+ErrorDocument 404 /404.html
+
+# Alte WordPress-URLs -> neue Seiten (301, exakt anchored, betrifft keine App-Ordner)
+RedirectMatch 301 ^/2011/04/26/ipad-magazin-jazz-echo-universal-music/?$ /case-jazzecho.html
+RedirectMatch 301 ^/2012/05/08/mobile-car-configurator-bmw/?$ /case-bmw.html
+RedirectMatch 301 ^/2012/09/03/app-developer-portal-vodafone/?$ /case-vodafone.html
+RedirectMatch 301 ^/2013/03/01/website-relaunch-fuer-db-schenker/?$ /case-db-schenker.html
+RedirectMatch 301 ^/2016/02/09/email-marketing-marketing-automation-fuer-gigmit/?$ /case-gigmit-email.html
+RedirectMatch 301 ^/2018/03/31/marketing-gigmit/?$ /case-gigmit-cmo.html
+RedirectMatch 301 ^/2018/06/25/marketing-gigmit-2/?$ /case-gigmit-paidsocial.html
+RedirectMatch 301 ^/2018/10/28/masshoff-drums-website/?$ /case-masshoff-website.html
+RedirectMatch 301 ^/2019/02/01/website-relaunch-fuer-masshoff-drums/?$ /case-masshoff-marketing.html
+RedirectMatch 301 ^/2020/08/21/email-marketing-fuer-gaiastore-com/?$ /case-gaiastore.html
+RedirectMatch 301 ^/kunden-projekte/?$ /referenzen.html
+RedirectMatch 301 ^/kontakt/impressum/?$ /impressum.html
+RedirectMatch 301 ^/kontakt/datenschutzerklaerung/?$ /datenschutz.html
+RedirectMatch 301 ^/kontakt/?$ /
+RedirectMatch 301 ^/leistungen/?$ /
+RedirectMatch 301 ^/ueber_mich/?$ /

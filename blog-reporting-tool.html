@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warum ich mir mein Reporting-Tool selbst gebaut habe — Michael Schweikhardt</title>
+<meta name="description" content="Der Meta Ads Manager zeigt nicht, was zählt. Wie aus einer Anforderung von SofaConcerts ein eigenes Creative-Reporting (saatori) wurde — und was es misst.">
+<meta property="og:title" content="Warum ich mir mein Reporting-Tool selbst gebaut habe">
+<meta property="og:description" content="Von der Kundenanforderung zum eigenen Creative-Reporting: Hook Rate, Hold Rate, Creative Score, KI-Diagnose.">
+<link rel="icon" type="image/png" href="assets/schweikhardt-stern.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Warum ich mir mein Reporting-Tool selbst gebaut habe","description":"Von der Kundenanforderung zum eigenen Creative-Reporting: Hook Rate, Hold Rate, Creative Score und KI-Diagnose.","author":{"@type":"Person","name":"Michael Schweikhardt","url":"https://schweikhardt.de/"},"publisher":{"@type":"Person","name":"Michael Schweikhardt"},"datePublished":"2026-08-26","inLanguage":"de","mainEntityOfPage":"https://schweikhardt.de/blog-reporting-tool.html"}
+</script>
+</head>
+<body>
+<nav><div class="wrap nav-i">
+  <a class="marke wortmarke" href="index.html"><span class="wm-b">Schweikhardt</span><span class="wm-r">Digital Concepts</span></a>
+  <input type="checkbox" id="navtog" class="navtog" aria-label="Menü">
+  <label for="navtog" class="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></label>
+  <div class="nav-r">
+    <a href="digital.html">Beratung</a>
+    <a href="paid-social.html">Marketing</a>
+    <a href="retro.html">Studio</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="blog.html">Blog</a>
+    <a href="vita.html">Werdegang</a>
+    <a class="cta" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch</a>
+  </div>
+</div></nav>
+
+<header class="x-hero"><div class="wrap article">
+  <a class="zurueck-s" href="blog.html">← Blog</a>
+  <div class="x-eyebrow">KI &amp; Automatisierung · Case</div>
+  <h1 class="x-h1">Warum ich mir mein <em>Reporting-Tool</em> selbst gebaut habe</h1>
+  <div class="ameta">26. August 2026 · 7 Min. Lesezeit</div>
+  <div class="tagchips"><span class="tagchip">KI &amp; Automatisierung</span><span class="tagchip">Paid Social</span><span class="tagchip">Case</span></div>
+</div></header>
+
+<section class="x"><div class="wrap"><div class="article">
+  <div class="tldr">
+    <div class="l">Das Wichtigste in Kürze</div>
+    <p>Der Meta Ads Manager zeigt viele Zahlen — aber nicht die, die über Erfolg entscheiden. Für <b>SofaConcerts</b> habe ich deshalb ein eigenes Reporting gebaut: <b>saatori</b>. Es bewertet jedes Creative nach <b>Hook Rate</b>, <b>Hold Rate</b> und einem <b>Creative Score</b> und liefert eine KI-Diagnose mit klarer Handlungsempfehlung. Ergebnis: schnellere, bessere Entscheidungen, welche Anzeigen skaliert und welche gestoppt gehören.</p>
+  </div>
+
+  <h2>Warum reicht der Ads Manager nicht?</h2>
+  <p>Der Meta Ads Manager kann fast alles anzeigen — und genau das ist das Problem. Man ertrinkt in Spalten, aber die eine Frage, die zählt, beantwortet er schlecht: <b>Welches Creative funktioniert, und warum?</b> Kennzahlen wie ROAS oder CTR sind Ergebnisse am Ende der Kette. Sie sagen dir, <em>dass</em> etwas nicht läuft, aber selten <em>woran</em> es liegt.</p>
+  <p>Dazu kam ein praktisches Ärgernis: Kundenreportings bestanden aus zusammengesuchten Screenshots. Viel Aufwand, wenig Klarheit — für mich wie für den Kunden.</p>
+
+  <h2>Wie aus einer Anforderung ein Produkt wurde</h2>
+  <p>Den Anstoß gab <b>SofaConcerts</b>. Der Kunde wollte nicht mehr Zahlen, sondern <b>Klarheit</b>: Welche Anzeigen tragen das Wachstum, welche verbrennen Budget? Ich habe also nicht die x-te Tabelle gebaut, sondern ein Reporting, das genau diese Frage beantwortet — creative-genau, verständlich, ohne Login-Odyssee.</p>
+  <p>Aus dieser konkreten Anforderung wurde ein eigenes Werkzeug: <b>saatori</b>. Was als Kundenlösung begann, ist heute ein Produkt, das ich meinen Kunden als White-Label-Report dazugebe. Genau so entsteht gute Software — nicht aus einer Feature-Liste, sondern aus einem echten Problem.</p>
+
+  <h2>Was saatori misst</h2>
+  <p>Statt fünfzig Spalten zeigt saatori pro Creative die drei Dinge, die wirklich steuern — plus eine Einordnung in Klartext:</p>
+  <ul>
+    <li><b>Hook Rate</b> — halten die ersten Sekunden die Aufmerksamkeit? Der wichtigste Frühindikator.</li>
+    <li><b>Hold Rate</b> — bleiben die Leute dran, oder springen sie ab?</li>
+    <li><b>Creative Score</b> — eine zusammenfassende Bewertung, die Hook, Hold und Performance verrechnet.</li>
+    <li><b>KI-Diagnose</b> — ein Satz, der sagt, was zu tun ist: skalieren, iterieren oder stoppen.</li>
+  </ul>
+  <div class="figure">
+    <div class="report">
+      <div class="rhead"><span class="n">Creative A · Video · „Nightclub 1950s"</span><span class="s">SKALIEREN</span></div>
+      <div class="rrow"><span>Hook Rate</span><b>38 %</b></div>
+      <div class="rrow"><span>Hold Rate</span><b>31 %</b></div>
+      <div class="rrow"><span>CTR (Link)</span><b>2,4 %</b></div>
+      <div class="rrow"><span>Creative Score</span><b>84 / 100</b></div>
+      <div class="rfoot"><b>KI-Diagnose:</b> Starker Hook in den ersten zwei Sekunden, überdurchschnittliche Hold Rate. Budget erhöhen und 2–3 Hook-Varianten testen, bevor die Ermüdung einsetzt.</div>
+    </div>
+    <div class="cap">Beispiel-Ansicht eines Creative-Reports (Illustration mit Beispielwerten).</div>
+  </div>
+
+  <h2>Warum das bessere Entscheidungen bringt</h2>
+  <p>Wer nur auf ROAS schaut, erkennt ein müdes Creative erst, wenn es schon Geld gekostet hat. Wer <b>Hook und Hold</b> im Blick hat, sieht früh, ob ein Creative überhaupt eine Chance hat — und kann gezielt gegensteuern, statt pauschal Budget zu verschieben. Das spart Streuverlust und macht Skalierung planbar. Wie man diese Kennzahlen liest, habe ich hier ausführlich beschrieben: <a class="inl" href="blog-hook-hold-rate.html">Hook Rate &amp; Hold Rate erklärt</a>.</p>
+
+  <h2>Was ich daraus fürs Arbeiten mitgenommen habe</h2>
+  <p>Zwei Dinge. Erstens: <b>Wenn das Standardwerkzeug die falsche Frage beantwortet, baut man sich das richtige.</b> Man muss kein Entwicklerteam sein — es reicht, das Problem genau zu verstehen und KI und Automatisierung als Hebel zu nutzen. Zweitens: <b>Die beste Software kommt aus echten Anforderungen.</b> saatori ist nie am Reißbrett entstanden, sondern an einer konkreten Kundenfrage.</p>
+  <p>Und ganz praktisch: Am Ende zählt nicht der Report, sondern die Entscheidung, die er auslöst. Welche das sein sollte, hängt an der richtigen Steuerungs-Kennzahl — dazu mehr in <a class="inl" href="blog-deckungsbeitrag-statt-roas.html">Deckungsbeitrag statt ROAS</a>.</p>
+
+  <div class="faq">
+    <h2>Häufige Fragen</h2>
+    <details><summary>Warum reicht der Meta Ads Manager nicht?</summary><p>Er zeigt Ergebnis-Kennzahlen wie ROAS und CTR, aber nur schwer, <em>warum</em> ein Creative funktioniert. Für creative-genaue Entscheidungen braucht es Frühindikatoren wie Hook und Hold Rate — verständlich aufbereitet.</p></details>
+    <details><summary>Was ist ein Creative Score?</summary><p>Eine zusammenfassende Bewertung pro Creative, die Hook Rate, Hold Rate und Performance verrechnet — als schnelle Orientierung, welches Motiv skaliert und welches nicht.</p></details>
+    <details><summary>Bekommen Kunden das Tool?</summary><p>Ja. Meine Kunden erhalten saatori als White-Label-Report zur Zusammenarbeit dazu — statt Screenshot-Sammlung ein klarer, laufender Report.</p></details>
+  </div>
+
+  <div class="author-box">
+    <img src="assets/portrait-neutral.jpg" alt="Michael Schweikhardt">
+    <div class="t"><b>Michael Schweikhardt</b><p>25 Jahre an der Schnittstelle von Marketing, Produkt und KI. Baut Kampagnen, Produkte und eigene Tools — u. a. saatori.</p></div>
+  </div>
+</div></div></section>
+
+<section class="x-finale"><div class="wrap">
+  <div class="lbl">Kontakt</div>
+  <h2>Reden wir über Ihre Creatives.</h2>
+  <p>30 Minuten, unverbindlich — ich schaue mir Ihre Kampagnen an und sage ehrlich, wo der Hebel liegt.</p>
+  <div class="akt">
+    <a class="btn" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch buchen</a>
+    <span class="neben">oder direkt: <a href="mailto:michael@schweikhardt.de">michael@schweikhardt.de</a></span>
+  </div>
+</div></section>
+<footer><div class="wrap foot-i">
+  <div>© 2026 Michael Schweikhardt — Berlin</div>
+  <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></footer>
+</body>
+</html>

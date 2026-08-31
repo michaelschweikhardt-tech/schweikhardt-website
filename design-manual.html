@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Manual — Michael Schweikhardt</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+:root{
+  --papier:#F5EFE2; --tinte:#1B1C1E; --grau:#5E5C55; --linie:#DDD5C2;
+  --orange:#E2762D; --teal:#2E7D76; --teal-tief:#14403C; --senf:#D9A441;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Archivo',sans-serif;background:var(--papier);color:var(--tinte);font-size:16px;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 40px}
+.anton{font-family:'Anton';text-transform:uppercase}
+.label{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--teal)}
+
+header{background:var(--tinte);color:var(--papier);padding:60px 0 54px;margin-bottom:60px}
+header h1{font-family:'Anton';text-transform:uppercase;font-size:clamp(40px,6vw,72px);line-height:.95}
+header h1 span{color:var(--orange)}
+header p{color:rgba(245,239,226,.72);margin-top:16px;max-width:60ch}
+header .v{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--senf);margin-bottom:20px}
+
+section{margin-bottom:64px}
+h2{font-family:'Anton';text-transform:uppercase;font-size:30px;margin-bottom:6px}
+.sub{color:var(--grau);margin-bottom:26px;max-width:70ch}
+.strich{height:2px;background:var(--tinte);margin-bottom:22px}
+
+/* Farben */
+.farben{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.f .feld{height:96px;border:1px solid var(--linie)}
+.f .nm{font-weight:600;margin-top:10px;font-size:15px}
+.f .hex{font-weight:600;letter-spacing:.1em;font-size:12px;color:var(--grau);text-transform:uppercase}
+.f .use{font-size:13.5px;color:var(--grau);margin-top:4px;line-height:1.45}
+
+/* Typo */
+.typo-block{border:2px solid var(--tinte);padding:26px 28px;margin-bottom:18px}
+.typo-block .meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.probe-anton{font-family:'Anton';text-transform:uppercase;font-size:44px;line-height:1}
+.probe-archivo{font-size:19px}
+.regeln{display:grid;grid-template-columns:repeat(2,1fr);gap:0 34px}
+.regeln div{padding:11px 0;border-bottom:1px solid var(--linie);font-size:15px}
+.regeln b{font-weight:600}
+
+/* Icons */
+.icons{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.ic{border:1px solid var(--linie);background:#fff;padding:18px;text-align:center}
+.ic svg{width:64px;height:64px}
+.ic .nm{font-size:13px;color:var(--grau);margin-top:10px;font-weight:600}
+
+/* Bausteine */
+.bau{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.demo{border:1px solid var(--linie);background:#fff;padding:22px}
+.demo .t{font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.btn-d{display:inline-block;background:var(--tinte);color:var(--papier);padding:14px 24px;font-weight:600;font-size:13px;letter-spacing:.03em;text-decoration:none}
+.btn-d.o{background:transparent;color:var(--tinte);border:1.5px solid var(--tinte)}
+.stat .w{font-family:'Anton';font-size:38px;line-height:1}
+.stat .w i{font-style:normal;color:var(--orange)}
+.stat .k{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin-top:6px}
+.balken-d{width:56px;height:8px;background:var(--orange);margin-bottom:12px}
+.stern-liste{list-style:none}
+.stern-liste li{position:relative;padding-left:20px;margin-bottom:6px;font-size:15px}
+.stern-liste li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;background:var(--orange);
+  clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%)}
+
+/* Ton */
+.ton{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.ton .k{border-left:5px solid var(--teal);padding-left:18px}
+.ton .k.nein{border-color:#B23A2E}
+.ton .k .t{font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:10px;color:var(--teal)}
+.ton .k.nein .t{color:#B23A2E}
+.ton p{margin-bottom:8px;font-size:15.5px}
+
+.dont{background:var(--tinte);color:var(--papier);padding:34px 38px}
+.dont h3{font-family:'Anton';text-transform:uppercase;font-size:22px;margin-bottom:14px}
+.dont ul{list-style:none}
+.dont li{padding:8px 0;border-bottom:1px solid #33343a;color:rgba(245,239,226,.78);font-size:15.5px}
+.dont li:last-child{border:none}
+
+footer{border-top:2px solid var(--tinte);padding:22px 0 60px;font-size:13px;color:var(--grau);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:800px){.farben,.icons{grid-template-columns:1fr 1fr}.bau,.ton,.regeln{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <div class="v">Design Manual · Version 1.0 · August 2026</div>
+  <h1>Michael<br><span>Schweikhardt</span></h1>
+  <p>Visuelles System für Website, Lebenslauf, Landingpages und alle weiteren Anwendungen. Grundidee: Mid-Century-Grafik trifft Gegenwart — die Formsprache von Jazz-Plattencovern, übersetzt in ein modernes, schnelles Marketing-Auftreten. Anspruchsvoll in der Substanz, mühelos im Auftritt.</p>
+</div></header>
+
+<div class="wrap">
+
+<section>
+  <h2>Farben</h2>
+  <p class="sub">Vier Farben tragen das System. Orange ist die Signalfarbe und wird sparsam eingesetzt — als Akzent, nie als Fläche über größere Bereiche. Teal ist die zweite Stimme, Papier und Tinte bilden das Grundgerüst.</p>
+  <div class="strich"></div>
+  <div class="farben">
+    <div class="f"><div class="feld" style="background:#F5EFE2"></div><div class="nm">Papier</div><div class="hex">#F5EFE2</div><div class="use">Grundfläche aller hellen Seiten. Im Druck durch Weiß ersetzt.</div></div>
+    <div class="f"><div class="feld" style="background:#1B1C1E"></div><div class="nm">Tinte</div><div class="hex">#1B1C1E</div><div class="use">Fließtext, Überschriften, dunkle Blöcke (Kopf, Kontakt).</div></div>
+    <div class="f"><div class="feld" style="background:#E2762D"></div><div class="nm">Orange</div><div class="hex">#E2762D</div><div class="use">Signalfarbe: Akzentzeilen, Buttons im Dunkeln, Sterne, Zahlen.</div></div>
+    <div class="f"><div class="feld" style="background:#2E7D76"></div><div class="nm">Teal</div><div class="hex">#2E7D76</div><div class="use">Zweitfarbe: Labels, Firmennamen, Duotone-Porträt.</div></div>
+  </div>
+  <div class="farben" style="margin-top:22px">
+    <div class="f"><div class="feld" style="background:#14403C"></div><div class="nm">Teal tief</div><div class="hex">#14403C</div><div class="use">Dunkle Kontrastflächen (saatori-Block, Kennzahlenband).</div></div>
+    <div class="f"><div class="feld" style="background:#D9A441"></div><div class="nm">Messing</div><div class="hex">#D9A441</div><div class="use">Nur auf dunklem Grund, für Labels. Sehr sparsam.</div></div>
+    <div class="f"><div class="feld" style="background:#DDD5C2"></div><div class="nm">Linie</div><div class="hex">#DDD5C2</div><div class="use">Trennlinien, Rahmen, Platzhalterflächen.</div></div>
+    <div class="f"><div class="feld" style="background:#5E5C55"></div><div class="nm">Grau</div><div class="hex">#5E5C55</div><div class="use">Sekundärtext, Bildunterschriften, Metaangaben.</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Typografie</h2>
+  <p class="sub">Zwei Schriften, mehr nicht. Anton für alles Laute, Archivo für alles Lesbare. Auf Mono-Schriften wurde bewusst verzichtet — Labels entstehen durch gesperrte Archivo-Versalien.</p>
+  <div class="strich"></div>
+
+  <div class="typo-block">
+    <div class="meta"><span class="label">Display · Anton Regular</span><span class="label" style="color:var(--grau)">Nur Versalien · Zeilenabstand 0,93–1,0</span></div>
+    <div class="probe-anton">Kreation, die verkauft.</div>
+  </div>
+
+  <div class="typo-block">
+    <div class="meta"><span class="label">Text · Archivo 400 / 600</span><span class="label" style="color:var(--grau)">Zeilenabstand 1,45–1,65</span></div>
+    <div class="probe-archivo">Paid Social, Creatives und Email-Strecken für Marken mit Haltung — <b>seit 25 Jahren, durch jeden Technologie-Umbruch.</b></div>
+  </div>
+
+  <div class="regeln" style="margin-top:24px">
+    <div><b>Headlines</b> — Anton, Versalien, eng gesetzt (letter-spacing .005em)</div>
+    <div><b>Fließtext</b> — Archivo 400, 16–17 px Web, 9,3 pt Print</div>
+    <div><b>Labels</b> — Archivo 600, Versalien, letter-spacing .12–.14em</div>
+    <div><b>Hervorhebung</b> — Archivo 600, niemals kursiv im Fließtext</div>
+    <div><b>Zweifarbige Headlines</b> — max. zwei Farben pro Headline</div>
+    <div><b>Keine dritte Schrift.</b> Auch nicht für Zitate oder Zahlen.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Icons</h2>
+  <p class="sub">Handgebaute SVGs im Cut-Paper-Stil: geometrische Grundformen, keine Outlines, keine Verläufe, maximal drei Farben pro Icon. Jedes Icon steht für ein Thema und wird nur dort verwendet.</p>
+  <div class="strich"></div>
+  <div class="icons">
+    <div class="ic">
+      <svg viewBox="0 0 84 84">
+        <path d="M10 34 L44 22 L44 54 L10 42 Z" fill="#E2762D"/><rect x="6" y="33" width="8" height="10" fill="#1B1C1E"/>
+        <path d="M50 24 C 62 32, 62 44, 50 52" fill="none" stroke="#2E7D76" stroke-width="4"/>
+        <path d="M56 16 C 74 28, 74 48, 56 60" fill="none" stroke="#2E7D76" stroke-width="4"/>
+      </svg>
+      <div class="nm">Paid Social</div>
+    </div>
+    <div class="ic">
+      <svg viewBox="0 0 84 84">
+        <rect x="18" y="26" width="48" height="34" fill="#2E7D76"/>
+        <path d="M18 26 L42 46 L66 26" fill="none" stroke="#F5EFE2" stroke-width="4"/>
+        <path d="M4 36 C 10 33, 10 39, 15 36" stroke="#E2762D" stroke-width="3.5" fill="none"/>
+        <path d="M4 46 C 10 43, 10 49, 15 46" stroke="#E2762D" stroke-width="3.5" fill="none"/>
+        <circle cx="70" cy="18" r="6" fill="#E2762D"/>
+      </svg>
+      <div class="nm">Email &amp; CRM</div>
+    </div>
+    <div class="ic">
+      <svg viewBox="0 0 84 84">
+        <rect x="12" y="52" width="9" height="20" fill="#2E7D76"/><rect x="26" y="40" width="9" height="32" fill="#E2762D"/>
+        <rect x="40" y="30" width="9" height="42" fill="#2E7D76"/><rect x="54" y="46" width="9" height="26" fill="#1B1C1E"/>
+        <line x1="20" y1="30" x2="66" y2="10" stroke="#1B1C1E" stroke-width="4"/><circle cx="68" cy="9" r="5" fill="#E2762D"/>
+      </svg>
+      <div class="nm">Strategie / Sparring</div>
+    </div>
+    <div class="ic">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#2E7D76" stroke-width="4"/>
+        <circle cx="42" cy="42" r="20" fill="none" stroke="#2E7D76" stroke-width="4"/>
+        <circle cx="42" cy="42" r="8" fill="#E2762D"/>
+      </svg>
+      <div class="nm">saatori / Daten</div>
+    </div>
+    <div class="ic">
+      <svg viewBox="0 0 84 84">
+        <path d="M42 8 L47 35 L74 42 L47 47 L42 74 L37 47 L10 42 L37 35 Z" fill="#E2762D"/>
+      </svg>
+      <div class="nm">Stern (Trenner)</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Bausteine</h2>
+  <p class="sub">Wiederkehrende Elemente. Wer eine neue Seite baut, setzt sie aus diesen Teilen zusammen, statt neue zu erfinden.</p>
+  <div class="strich"></div>
+  <div class="bau">
+    <div class="demo">
+      <div class="t">Buttons</div>
+      <a class="btn-d" href="#">Erstgespräch buchen</a>
+      <a class="btn-d o" href="#" style="margin-left:8px">Arbeiten ansehen</a>
+      <p style="font-size:14px;color:var(--grau);margin-top:14px">Rechteckig, kein Radius. Hover: Hintergrund wird Orange.</p>
+    </div>
+    <div class="demo">
+      <div class="t">Kennzahl</div>
+      <div class="stat"><div class="w">16<i>×</i></div><div class="k">Nutzerwachstum als CMO · gigmit</div></div>
+      <p style="font-size:14px;color:var(--grau);margin-top:14px">Anton-Zahl, Einheit in Orange, Label als gesperrte Versalien.</p>
+    </div>
+    <div class="demo">
+      <div class="t">Absatzmarke</div>
+      <div class="balken-d"></div>
+      <p style="font-size:15px">Der Orange-Balken markiert den Haupttext neben einer Headline — 56 × 8 px.</p>
+    </div>
+    <div class="demo">
+      <div class="t">Aufzählung</div>
+      <ul class="stern-liste"><li>Vierzackiger Stern statt Punkt</li><li>Immer in Orange</li><li>Auch als Trenner zwischen Kundennamen</li></ul>
+    </div>
+    <div class="demo">
+      <div class="t">Rundstempel</div>
+      <svg width="86" height="86" viewBox="0 0 96 96">
+        <circle cx="48" cy="48" r="46" fill="#1B1C1E"/>
+        <defs><path id="rm" d="M 48,48 m -33,0 a 33,33 0 1,1 66,0 a 33,33 0 1,1 -66,0"/></defs>
+        <text font-family="Archivo" font-weight="600" font-size="9.5" letter-spacing="2.4" fill="#F5EFE2"><textPath href="#rm">EST. 1999 · BERLIN · </textPath></text>
+        <circle cx="48" cy="48" r="8" fill="#E2762D"/>
+      </svg>
+      <p style="font-size:14px;color:var(--grau);margin-top:10px">Immer leicht gedreht (−10°), an Bildkanten angeschnitten.</p>
+    </div>
+    <div class="demo">
+      <div class="t">Duotone-Porträt</div>
+      <p style="font-size:15px">Graustufen, Kontrast +20 %, Farbverlauf Tiefen → Teal → Papier, feines Korn. Alternative Variante in Orange. Immer 4:5.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Sprache</h2>
+  <p class="sub">Der Ton ist Teil des Designs: direkt, konkret, ohne Marketing-Weichspüler. Ehrlichkeit ist das Verkaufsargument — auch wenn sie Geschäft kosten könnte.</p>
+  <div class="strich"></div>
+  <div class="ton">
+    <div class="k">
+      <div class="t">So klingt es</div>
+      <p>„Ich optimiere auf Deckungsbeitrag, nicht auf Schaufenster-KPIs."</p>
+      <p>„Auch wenn das Ergebnis ist, dass Sie mich nicht brauchen."</p>
+      <p>„Unter 3.000 € Mediabudget melde ich mich nicht als Dienstleister an."</p>
+      <p>„Wer Ihnen etwas anderes verspricht, verkauft Zufall als Können."</p>
+    </div>
+    <div class="k nein">
+      <div class="t">So nicht</div>
+      <p>„Wir maximieren Ihren digitalen Erfolg."</p>
+      <p>„Innovative Lösungen für Ihr Business."</p>
+      <p>„Lassen Sie uns gemeinsam durchstarten!"</p>
+      <p>Superlative, Ausrufezeichen, Emoji-Ketten, Agentur-Wir.</p>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:20px"><b>Anrede:</b> Sie. <b>Perspektive:</b> Ich (kein Agentur-Wir — es gibt nur mich). <b>Zahlen</b> immer mit Quelle. <b>Keine Behauptung ohne Beleg.</b></p>
+</section>
+
+<section>
+  <div class="dont">
+    <h3>Was das System kaputt macht</h3>
+    <ul>
+      <li>Eine dritte Schrift einführen — besonders Serifen oder Mono.</li>
+      <li>Orange großflächig einsetzen. Es ist Signal, nicht Fläche.</li>
+      <li>Runde Ecken, Schlagschatten, Farbverläufe auf Flächen.</li>
+      <li>Stockfotos. Es gibt echte Creatives und echte Porträts.</li>
+      <li>Icons in anderen Stilen (Outline-Icons, Emoji, Icon-Fonts).</li>
+      <li>Mehr als zwei dunkle Blöcke pro Seite — der Kontrast lebt von Seltenheit.</li>
+      <li>Marketing-Floskeln. Sie zerstören die Glaubwürdigkeit schneller als jedes Layout.</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="wrap">Michael Schweikhardt · Design Manual 1.0 · Fragen zum System: michael@schweikhardt.de</div></footer>
+
+</body>
+</html>

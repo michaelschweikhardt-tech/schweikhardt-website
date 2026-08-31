@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Marketing, Produkt & KI in der Praxis — Michael Schweikhardt</title>
+<meta name="description" content="Klartext zu Performance Marketing, digitaler Produktarbeit und KI in der Praxis — mit echten Kennzahlen, Workflows und Meinungen.">
+<meta property="og:title" content="Blog — Michael Schweikhardt">
+<meta property="og:description" content="Praxis, Kennzahlen und Meinungen zu Marketing, Produkt und KI.">
+<link rel="icon" type="image/png" href="assets/schweikhardt-stern.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="wrap nav-i">
+  <a class="marke wortmarke" href="index.html"><span class="wm-b">Schweikhardt</span><span class="wm-r">Digital Concepts</span></a>
+  <input type="checkbox" id="navtog" class="navtog" aria-label="Menü">
+  <label for="navtog" class="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></label>
+  <div class="nav-r">
+    <a href="digital.html">Beratung</a>
+    <a href="paid-social.html">Marketing</a>
+    <a href="retro.html">Studio</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="blog.html">Blog</a>
+    <a href="vita.html">Werdegang</a>
+    <a class="cta" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch</a>
+  </div>
+</div></nav>
+
+<header class="x-hero"><div class="wrap">
+  <a class="zurueck-s" href="index.html">← Startseite</a>
+  <div class="x-eyebrow">Blog</div>
+  <h1 class="x-h1">Klartext zu <em>Marketing, Produkt & KI.</em></h1>
+  <p class="x-lead">Praxis, echte Kennzahlen und klare Meinungen — von jemandem, der es selbst macht: Kampagnen steuert, Produkte baut, Tools entwickelt. Kein Buzzword-Bingo.</p>
+</div></header>
+
+<section class="x"><div class="wrap">
+  <div class="blog-filter" id="filter">
+    <button data-filter="all" class="active">Alle</button>
+    <button data-filter="paidsocial">Paid Social</button>
+    <button data-filter="creative">Creative &amp; KI-Content</button>
+    <button data-filter="ki">KI &amp; Automatisierung</button>
+  </div>
+
+  <div class="postgrid" id="grid">
+    <a class="postcard" href="blog-reporting-tool.html" data-tags="ki paidsocial case">
+      <div class="cat">KI &amp; Automatisierung · Case</div>
+      <h3>Warum ich mir mein Reporting-Tool selbst gebaut habe</h3>
+      <p>Der Ads Manager zeigt nicht, was zählt. Wie aus einer Kundenanforderung von SofaConcerts ein eigenes Creative-Reporting (saatori) wurde — und was es misst.</p>
+      <div class="meta">26. August 2026 · 7 Min.</div>
+    </a>
+    <a class="postcard" href="blog-hook-hold-rate.html" data-tags="paidsocial creative erklaert">
+      <div class="cat">Paid Social · Erklärt</div>
+      <h3>Hook Rate &amp; Hold Rate: Creatives lesen wie ein Analyst</h3>
+      <p>Warum die ersten zwei Sekunden über deinen Ad-Erfolg entscheiden — und wie du mit zwei Kennzahlen erkennst, welches Creative skaliert und welches nicht.</p>
+      <div class="meta">26. August 2026 · 6 Min.</div>
+    </a>
+    <a class="postcard" href="blog-deckungsbeitrag-statt-roas.html" data-tags="paidsocial deepdive">
+      <div class="cat">Paid Social · Deep-Dive</div>
+      <h3>Deckungsbeitrag statt ROAS — die Kennzahl, die wirklich zählt</h3>
+      <p>ROAS sieht gut aus und führt trotzdem in die Verlustzone. Welche Kennzahl du stattdessen brauchst — inklusive der einfachen Rechnung dahinter.</p>
+      <div class="meta">25. August 2026 · 7 Min.</div>
+    </a>
+  </div>
+  <p class="blog-empty" id="empty">Zu diesem Thema ist noch kein Artikel da — bald mehr.</p>
+</div></section>
+
+<footer><div class="wrap foot-i">
+  <div>© 2026 Michael Schweikhardt — Berlin</div>
+  <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('#filter button');
+  var cards=document.querySelectorAll('#grid .postcard');
+  var empty=document.getElementById('empty');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+      var f=b.getAttribute('data-filter');
+      var shown=0;
+      cards.forEach(function(c){
+        var ok = f==='all' || (' '+c.getAttribute('data-tags')+' ').indexOf(' '+f+' ')>-1;
+        c.classList.toggle('hide',!ok);
+        if(ok) shown++;
+      });
+      empty.style.display = shown===0 ? 'block' : 'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>

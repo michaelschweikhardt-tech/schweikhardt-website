@@ -1,0 +1,53 @@
+name: Deploy zu Strato (SFTP, additiv)
+
+# Läuft bei jedem Push auf main und kann manuell gestartet werden.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: strato-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publish-Verzeichnis bauen (nur Live-Dateien)
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '_site' \
+            --exclude 'README.md' \
+            --exclude 'DEPLOY.md' \
+            --exclude 'CHANGELOG.md' \
+            --exclude 'GITHUB-STRATO-DEPLOY.md' \
+            --exclude 'design-manual.html' \
+            --exclude 'CNAME' \
+            --exclude '.DS_Store' \
+            ./ _site/
+          echo "Zu deployende Dateien:"; find _site -type f | sort
+
+      - name: SFTP-Upload (lftp mirror -R, OHNE --delete)
+        env:
+          SFTP_HOST: ${{ secrets.STRATO_SFTP_HOST }}
+          SFTP_USER: ${{ secrets.STRATO_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.STRATO_SFTP_PASSWORD }}
+          WEBROOT:   ${{ vars.STRATO_WEBROOT }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          : "${WEBROOT:=.}"
+          echo "Ziel-Webroot: $WEBROOT"
+          lftp -c "
+            set sftp:auto-confirm yes;
+            set net:max-retries 2;
+            set net:timeout 20;
+            open -u '$SFTP_USER','$SFTP_PASS' sftp://$SFTP_HOST:22;
+            mirror -R --no-perms --verbose _site/ '$WEBROOT';
+          "

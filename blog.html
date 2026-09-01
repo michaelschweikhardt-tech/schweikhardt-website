@@ -39,22 +39,29 @@
     <button data-filter="paidsocial">Paid Social</button>
     <button data-filter="creative">Creative &amp; KI-Content</button>
     <button data-filter="ki">KI &amp; Automatisierung</button>
+    <button data-filter="aeo">SEO/AEO/GEO</button>
   </div>
 
   <div class="postgrid" id="grid">
-    <a class="postcard" href="blog-reporting-tool.html" data-tags="ki paidsocial case">
+    <a class="postcard" href="blog-was-ist-aeo-und-geo.html" data-tags="aeo erklaert" data-date="2026-09-01">
+      <div class="cat">SEO/AEO/GEO · Erklärt</div>
+      <h3>Was ist AEO und GEO? Und wie Marken in KI-Antworten auftauchen</h3>
+      <p>Immer mehr Menschen bekommen Antworten direkt von KI statt einer Linkliste. Wie deine Marke dort auftaucht — AEO und GEO ohne Buzzword-Bingo erklärt.</p>
+      <div class="meta">1. September 2026 · 4 Min.</div>
+    </a>
+    <a class="postcard" href="blog-reporting-tool.html" data-tags="ki paidsocial case" data-date="2026-08-26">
       <div class="cat">KI &amp; Automatisierung · Case</div>
       <h3>Warum ich mir mein Reporting-Tool selbst gebaut habe</h3>
       <p>Der Ads Manager zeigt nicht, was zählt. Wie aus einer Kundenanforderung von SofaConcerts ein eigenes Creative-Reporting (saatori) wurde — und was es misst.</p>
       <div class="meta">26. August 2026 · 7 Min.</div>
     </a>
-    <a class="postcard" href="blog-hook-hold-rate.html" data-tags="paidsocial creative erklaert">
+    <a class="postcard" href="blog-hook-hold-rate.html" data-tags="paidsocial creative erklaert" data-date="2026-08-26">
       <div class="cat">Paid Social · Erklärt</div>
       <h3>Hook Rate &amp; Hold Rate: Creatives lesen wie ein Analyst</h3>
       <p>Warum die ersten zwei Sekunden über deinen Ad-Erfolg entscheiden — und wie du mit zwei Kennzahlen erkennst, welches Creative skaliert und welches nicht.</p>
       <div class="meta">26. August 2026 · 6 Min.</div>
     </a>
-    <a class="postcard" href="blog-deckungsbeitrag-statt-roas.html" data-tags="paidsocial deepdive">
+    <a class="postcard" href="blog-deckungsbeitrag-statt-roas.html" data-tags="paidsocial deepdive" data-date="2026-08-25">
       <div class="cat">Paid Social · Deep-Dive</div>
       <h3>Deckungsbeitrag statt ROAS — die Kennzahl, die wirklich zählt</h3>
       <p>ROAS sieht gut aus und führt trotzdem in die Verlustzone. Welche Kennzahl du stattdessen brauchst — inklusive der einfachen Rechnung dahinter.</p>
@@ -70,23 +77,33 @@
 </div></footer>
 <script>
 (function(){
+  var today=new Date(); today.setHours(0,0,0,0);
   var btns=document.querySelectorAll('#filter button');
   var cards=document.querySelectorAll('#grid .postcard');
   var empty=document.getElementById('empty');
+  // Datums-Reveal: Artikel mit Datum in der Zukunft bleiben ungelistet
+  cards.forEach(function(c){
+    var d=c.getAttribute('data-date');
+    if(d){ var dt=new Date(d+'T00:00:00'); if(dt>today){ c.setAttribute('data-scheduled','1'); } }
+  });
+  function apply(f){
+    var shown=0;
+    cards.forEach(function(c){
+      if(c.getAttribute('data-scheduled')){ c.classList.add('hide'); return; }
+      var ok = f==='all' || (' '+c.getAttribute('data-tags')+' ').indexOf(' '+f+' ')>-1;
+      c.classList.toggle('hide',!ok);
+      if(ok) shown++;
+    });
+    empty.style.display = shown===0 ? 'block' : 'none';
+  }
   btns.forEach(function(b){
     b.addEventListener('click',function(){
       btns.forEach(function(x){x.classList.remove('active')});
       b.classList.add('active');
-      var f=b.getAttribute('data-filter');
-      var shown=0;
-      cards.forEach(function(c){
-        var ok = f==='all' || (' '+c.getAttribute('data-tags')+' ').indexOf(' '+f+' ')>-1;
-        c.classList.toggle('hide',!ok);
-        if(ok) shown++;
-      });
-      empty.style.display = shown===0 ? 'block' : 'none';
+      apply(b.getAttribute('data-filter'));
     });
   });
+  apply('all');
 })();
 </script>
 </body>

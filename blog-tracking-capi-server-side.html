@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sauber messen trotz iOS und Consent: CAPI und Server-Side erklärt — Michael Schweikhardt</title>
+<meta name="description" content="Warum reines Browser-Tracking oft 30–50 % der Conversions verliert — und wie du mit Pixel + Conversions API, Deduplizierung und Server-Side trotzdem sauber und rechtssicher misst. Stand 2026.">
+<meta property="og:title" content="Sauber messen trotz iOS und Consent: CAPI und Server-Side erklärt">
+<meta property="og:description" content="Pixel, CAPI, Event Match Quality, Consent Mode — der ehrliche Tracking-Stand 2026.">
+<meta property="og:image" content="https://schweikhardt.de/assets/cases/blog-tracking.png">
+<link rel="icon" type="image/png" href="assets/schweikhardt-stern.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Sauber messen trotz iOS und Consent: CAPI und Server-Side erklärt","description":"Wie du trotz Safari-ITP, iOS-ATT und Consent sauber misst — mit Pixel + Conversions API, Deduplizierung über event_id und Server-Side.","author":{"@type":"Person","name":"Michael Schweikhardt","url":"https://schweikhardt.de/"},"publisher":{"@type":"Person","name":"Michael Schweikhardt"},"datePublished":"2026-09-03","dateModified":"2026-09-03","image":"https://schweikhardt.de/assets/cases/blog-tracking.png","inLanguage":"de","mainEntityOfPage":"https://schweikhardt.de/blog-tracking-capi-server-side.html"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Sterben Third-Party-Cookies jetzt oder nicht?","acceptedAnswer":{"@type":"Answer","text":"Google hat die geplante Abschaffung 2024 zurückgezogen und im April 2025 endgültig bestätigt: In Chrome bleiben Third-Party-Cookies standardmäßig aktiv, die meisten Privacy-Sandbox-Techniken wurden im Oktober 2025 eingestellt. Safari, Firefox und Brave blockieren sie aber weiterhin — daher kommt der Signalverlust heute vor allem, nicht von Chrome."}},{"@type":"Question","name":"Ersetzt die Conversions API den Pixel?","acceptedAnswer":{"@type":"Answer","text":"Nein. Best Practice 2026 ist beides parallel: Der Pixel liefert Browser-Signale, die Conversions API liefert das Server-Signal, wenn der Pixel blockiert wird. Beide Events werden über eine gemeinsame event_id dedupliziert, damit dieselbe Conversion nur einmal zählt."}},{"@type":"Question","name":"Ist Server-Side-Tracking ein Weg um die Einwilligung herum?","acceptedAnswer":{"@type":"Answer","text":"Nein. Server-Side verlagert nur, wo Daten verarbeitet werden — es hebelt die Einwilligungspflicht nicht aus. Im EWR brauchst du weiterhin eine gültige Einwilligung; Consent Mode v2 und der Consent-Status müssen auch serverseitig respektiert werden. Sauber messen heißt auch rechtssicher messen."}}]}
+</script>
+</head>
+<body>
+<nav><div class="wrap nav-i">
+  <a class="marke wortmarke" href="index.html"><span class="wm-b">Schweikhardt</span><span class="wm-r">Digital Concepts</span></a>
+  <input type="checkbox" id="navtog" class="navtog" aria-label="Menü">
+  <label for="navtog" class="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></label>
+  <div class="nav-r">
+    <a href="digital.html">Beratung</a>
+    <a href="paid-social.html">Marketing</a>
+    <a href="retro.html">Studio</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="blog.html">Blog</a>
+    <a href="vita.html">Werdegang</a>
+    <a class="cta" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch</a>
+  </div>
+</div></nav>
+
+<header class="x-hero"><div class="wrap article">
+  <a class="zurueck-s" href="blog.html">← Blog</a>
+  <div class="x-eyebrow">Analytics &amp; Tracking · Deep-Dive</div>
+  <h1 class="x-h1">Sauber messen trotz iOS und Consent: <em>CAPI und Server-Side erklärt</em></h1>
+  <div class="ameta">3. September 2026 · 8 Min. Lesezeit</div>
+  <div class="tagchips"><span class="tagchip">Analytics &amp; Tracking</span><span class="tagchip">Deep-Dive</span></div>
+</div></header>
+
+<section class="x"><div class="wrap"><div class="article">
+  <div class="tldr">
+    <div class="l">Das Wichtigste in Kürze</div>
+    <p>Reines Browser-Tracking verliert heute, je nach Traffic-Mix, grob <b>30–50 % der Conversions</b> — nicht wegen Chrome, sondern wegen Safaris Tracking-Schutz, iOS-App-Tracking (ATT) und Ad-Blockern. Wer trotzdem sauber messen will, kombiniert <b>Pixel und Conversions API</b> parallel, dedupliziert beide über eine gemeinsame <b>event_id</b> und respektiert dabei die Einwilligung. Das ist 2026 Standard, kein Hexenwerk — und die <b>Event Match Quality</b> ist der Hebel, den die meisten Konten ungenutzt lassen.</p>
+  </div>
+
+  <h2>Warum stimmen meine Zahlen nicht mehr?</h2>
+  <p>Kurze Antwort: Ein wachsender Teil der Käufe erreicht den Werbekanal nicht mehr, weil der Browser das Tracking blockiert. Schätzungen zufolge fehlen bei reinem Pixel-Tracking heute <b>30–50 %</b> der Conversions. Die Ursachen sind <b>Safaris Intelligent Tracking Prevention</b>, <b>iOS App Tracking Transparency</b> (Nutzer, die „Nicht tracken" wählen) und <b>Ad-Blocker</b>.</p>
+  <p>Wichtig, weil es viele noch falsch im Kopf haben: Das große „Cookie-Sterben" in Chrome ist <b>abgesagt</b>. Google hat die geplante Abschaffung der Third-Party-Cookies 2024 zurückgezogen und im April 2025 endgültig bestätigt; im Oktober 2025 wurden zudem die meisten Privacy-Sandbox-Techniken eingestellt. Third-Party-Cookies sind in Chrome also weiter standardmäßig an. Das eigentliche Problem sitzt <b>nicht</b> in Chrome, sondern bei Safari, iOS und Ad-Blockern — und das löst man nicht mit Warten, sondern mit serverseitiger Messung.</p>
+
+  <h2>Was ist die Conversions API (CAPI)?</h2>
+  <p>Die <b>Conversions API</b> schickt Ereignisse wie einen Kauf <b>direkt von deinem Server</b> an Meta — Server zu Server, ohne den Umweg über den Browser des Nutzers. Andere Plattformen haben ihr Gegenstück: Google Ads nennt es <i>Enhanced Conversions</i> (genau genommen eine Anreicherung des bestehenden Google-Tags mit gehashten First-Party-Daten, kein reiner Server-zu-Server-Stream wie Metas CAPI), TikTok die <i>Events API</i>. Der Punkt ist derselbe: Auch wenn der Browser das Tracking blockiert, kommt das Ereignis über den Server trotzdem an.</p>
+
+  <h2>Pixel oder CAPI — was denn nun?</h2>
+  <p>Beides. Die richtige Frage ist nicht „Pixel <i>oder</i> CAPI", sondern wie du sie <b>parallel</b> betreibst:</p>
+  <ul>
+    <li><b>Pixel</b> liefert Browser-Signale — Cookie-IDs (fbp/fbc), User-Agent, Klick-Kontext.</li>
+    <li><b>CAPI</b> liefert das Signal vom Server, wenn der Pixel blockiert wird.</li>
+    <li><b>Deduplizierung über <code>event_id</code>:</b> Beide Events tragen dieselbe ID, damit Meta erkennt, dass es <b>ein</b> Kauf ist — und ihn nur einmal zählt.</li>
+  </ul>
+  <p>Genau hier passiert der häufigste Fehler: Ist die Deduplizierung nicht sauber konfiguriert — unterschiedliche oder fehlende <code>event_id</code> —, zählt Meta denselben Kauf <b>doppelt</b>, oder das zusätzliche Server-Signal bringt gar nichts. Richtig gemacht, holt die Kombination grob <b>20–30 %</b> der verlorenen Daten zurück und verbessert die Attribution spürbar.</p>
+
+  <h2>Was ist Event Match Quality — und warum entscheidet sie?</h2>
+  <p>Der am meisten unterschätzte Hebel. Damit Meta ein Server-Event einem Menschen zuordnen kann, schickst du <b>Match-Keys</b> mit — gehasht, also nicht im Klartext: E-Mail, Telefonnummer, die Cookie-IDs fbp/fbc, IP, Name. Je mehr und je bessere Keys, desto höher die <b>Event Match Quality (EMQ)</b>, eine Skala bis 10. Metas grober Benchmark liegt bei rund <b>6</b>; <b>8+</b> ist stark und für Käufe ein ambitioniertes, aber realistisches Ziel. Der Unterschied ist nicht kosmetisch: Höhere EMQ heißt bessere Zuordnung, bessere Optimierung, sauberere Zahlen. Viele Konten dümpeln bei 5–6 und lassen damit Performance liegen.</p>
+
+  <h2>Wo kommt Server-Side (sGTM) ins Spiel?</h2>
+  <p><b>Server-Side Tagging</b> — meist ein Google-Tag-Manager-Container auf deiner eigenen Subdomain — ist das saubere Fundament darunter. Statt dass jedes Tool sein Skript im Browser lädt, laufen die Ereignisse über <b>deinen</b> Server und werden von dort an Meta, Google und TikTok verteilt. Zwei handfeste Vorteile: Du setzt <b>First-Party-Cookies serverseitig</b>, die länger halten — clientseitig (per JavaScript) gesetzte Cookies kappt Safari nach rund sieben Tagen; serverseitig auf einer echten First-Party-Domain gesetzte halten deutlich länger (bis zu rund 400 Tage), solange die Domain nicht als Tracker eingestuft wird —, und du hast <b>einen</b> kontrollierten Datenfluss statt eines Wildwuchses an Browser-Skripten. Pflicht ist sGTM nicht, aber es ist die robusteste Basis für alles oben.</p>
+
+  <h2>Und der Datenschutz? Consent Mode und Einwilligung</h2>
+  <p>Klar und wichtig: <b>Server-Side ist kein Weg um die Einwilligung herum.</b> Es verlagert nur, <i>wo</i> Daten verarbeitet werden — die Einwilligungspflicht bleibt. Im EWR brauchst du weiterhin eine gültige Einwilligung, bevor du zu Werbezwecken misst.</p>
+  <p><b>Google Consent Mode v2</b> ist dafür seit März 2024 für EWR-Werbetreibende mit Google-Diensten Pflicht. Er überträgt vier Signale — <code>ad_storage</code>, <code>analytics_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code> — und steuert, was vor und nach der Einwilligung passiert. „Basic" blockiert die Tags bis zur Zustimmung; „Advanced" lädt sie mit auf „denied" gesetzten Defaults und sendet vorher nur anonyme, cookielose Pings.</p>
+  <p>Seit dem <b>15. Juni 2026</b> hängt außerdem die Weitergabe von Analytics-Daten an Google Ads allein am Consent-Signal: <code>ad_storage</code> entscheidet, ob Google Ads überhaupt Cookies und IDs erfassen darf, <code>ad_user_data</code>, ob gehashte First-Party-Daten (etwa für Enhanced Conversions) übergeben werden dürfen. Das frühere Sicherheitsnetz über „Google Signals" fällt damit weg — sauberes Consent-Signaling ist jetzt noch wichtiger.</p>
+  <p>Auch dein Server-Container muss den Consent-Status respektieren. Kurz: Sauber messen heißt auch <b>rechtssicher</b> messen. (Das ist keine Rechtsberatung — die konkrete Umsetzung gehört mit deinem Datenschutzbeauftragten abgestimmt.)</p>
+
+  <h2>Womit fange ich an?</h2>
+  <p>Realistische Reihenfolge, nicht alles auf einmal:</p>
+  <ul>
+    <li><b>1. Pixel + CAPI parallel</b> mit sauberer <code>event_id</code>-Deduplizierung.</li>
+    <li><b>2. Event Match Quality hochziehen</b> — gehashte E-Mail und Telefonnummer mitsenden, fbp/fbc zuverlässig erfassen. Der schnellste Gewinn.</li>
+    <li><b>3. Consent Mode v2 + CMP</b> sauber aufsetzen, serverseitig respektieren.</li>
+    <li><b>4. Server-Side (sGTM)</b> als Fundament, wenn Volumen und Anspruch es rechtfertigen.</li>
+  </ul>
+  <p>Und dann der eigentliche Zweck: Wenn die Messung steht, kannst du den Zahlen wieder trauen — und auf das steuern, was zählt. Dazu passt <a class="inl" href="blog-deckungsbeitrag-statt-roas.html">Deckungsbeitrag statt ROAS</a> und <a class="inl" href="blog-reporting-tool.html">warum ich mir mein Reporting selbst gebaut habe</a>.</p>
+
+  <div class="faq">
+    <h2>Häufige Fragen</h2>
+    <details><summary>Sterben Third-Party-Cookies jetzt oder nicht?</summary><p>Google hat die geplante Abschaffung 2024 zurückgezogen und im April 2025 endgültig bestätigt: In Chrome bleiben Third-Party-Cookies standardmäßig aktiv, die meisten Privacy-Sandbox-Techniken wurden im Oktober 2025 eingestellt. Safari, Firefox und Brave blockieren sie aber weiterhin — daher kommt der Signalverlust heute vor allem, nicht von Chrome.</p></details>
+    <details><summary>Ersetzt die Conversions API den Pixel?</summary><p>Nein. Best Practice 2026 ist beides parallel: Der Pixel liefert Browser-Signale, die Conversions API liefert das Server-Signal, wenn der Pixel blockiert wird. Beide Events werden über eine gemeinsame event_id dedupliziert, damit dieselbe Conversion nur einmal zählt.</p></details>
+    <details><summary>Ist Server-Side-Tracking ein Weg um die Einwilligung herum?</summary><p>Nein. Server-Side verlagert nur, wo Daten verarbeitet werden — es hebelt die Einwilligungspflicht nicht aus. Im EWR brauchst du weiterhin eine gültige Einwilligung; Consent Mode v2 und der Consent-Status müssen auch serverseitig respektiert werden. Sauber messen heißt auch rechtssicher messen.</p></details>
+  </div>
+
+  <div class="author-box">
+    <img src="assets/portrait-neutral.jpg" alt="Michael Schweikhardt">
+    <div class="t"><b>Michael Schweikhardt</b><p>25 Jahre an der Schnittstelle von Marketing, Produkt und KI. Baut Kampagnen, Produkte und eigene Tools — u. a. saatori. Betreut Meta-Ads-Konten mit CAPI-/Server-Side-Setup.</p></div>
+  </div>
+</div></div></section>
+
+<section class="x-finale"><div class="wrap">
+  <div class="lbl">Kontakt</div>
+  <h2>Unsicher, ob deine Messung sauber steht?</h2>
+  <p>30 Minuten, unverbindlich — ich schaue mir dein Tracking-Setup an (Pixel, CAPI, Consent) und sage ehrlich, wo Signal verloren geht und was sich zuerst lohnt.</p>
+  <div class="akt">
+    <a class="btn" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch buchen</a>
+    <span class="neben">oder direkt: <a href="mailto:michael@schweikhardt.de">michael@schweikhardt.de</a></span>
+  </div>
+</div></section>
+<footer><div class="wrap foot-i">
+  <div>© 2026 Michael Schweikhardt — Berlin</div>
+  <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></footer>
+</body>
+</html>

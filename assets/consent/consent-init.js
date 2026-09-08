@@ -1,6 +1,7 @@
 /* Consent-Banner (vanilla-cookieconsent v3) + Google Consent Mode v2
    Selbst gehostet, kein Vendor-Dashboard. Kategorien: necessary, analytics (GA4), marketing (Meta). */
 (function () {
+  var pixelPushed = false;
   function updateConsent () {
     var a = CookieConsent.acceptedCategory('analytics');
     var m = CookieConsent.acceptedCategory('marketing');
@@ -10,6 +11,12 @@
       ad_user_data:      m ? 'granted' : 'denied',
       ad_personalization:m ? 'granted' : 'denied'
     });
+    // Meta Pixel erst bei Marketing-Einwilligung und genau einmal pro Seite auslösen
+    window.dataLayer = window.dataLayer || [];
+    if (m && !pixelPushed) {
+      pixelPushed = true;
+      window.dataLayer.push({ event: 'cookie_consent_update' });
+    }
   }
   CookieConsent.run({
     guiOptions: {

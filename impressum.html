@@ -3,12 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Consent Mode Default (vor GTM) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WZC6K2B');</script>
+<!-- CookieConsent (self-hosted CMP) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+<script defer src="/assets/consent/consent-init.js"></script>
 <title>Impressum — Michael Schweikhardt</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="assets/schweikhardt-stern.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZC6K2B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav><div class="wrap nav-i">
   <a class="marke wortmarke" href="index.html"><span class="wm-b">Schweikhardt</span><span class="wm-r">Digital Concepts</span></a>
   <input type="checkbox" id="navtog" class="navtog" aria-label="Menü">
@@ -48,7 +59,7 @@
 </div></div></section>
 <footer><div class="wrap foot-i">
   <div>© 2026 Michael Schweikhardt — Berlin</div>
-  <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
+  <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cc="show-preferencesModal">Cookie-Einstellungen</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
 </div></footer>
 </body>
 </html>

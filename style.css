@@ -486,3 +486,8 @@ section.x{padding:92px 0 0}
 .report .rrow b{color:var(--tinte);font-family:'Archivo';font-weight:700}
 .report .rfoot{padding:14px 20px;font-size:14.5px;color:var(--grau);line-height:1.55}
 .report .rfoot b{color:var(--tinte);font-weight:600}
+
+/* Freisteller-Porträt (Hero) + einspaltige Über-mich-Sektion */
+.x-portrait.frei{aspect-ratio:auto;overflow:visible;border:none;background:none}
+.x-portrait.frei img{width:100%;height:auto;object-fit:contain;object-position:center}
+.x-ueber.solo{grid-template-columns:1fr}

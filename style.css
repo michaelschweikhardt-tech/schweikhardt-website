@@ -295,7 +295,7 @@ footer a{text-decoration:none;color:#c8c4b8}
    SERIÖSE VARIANTE — gemeinsame Bausteine (Home + Unterseiten)
    ========================================================== */
 .x-hero{padding:82px 0 0}
-.x-hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:64px;align-items:center}
+.x-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
 .x-eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:500}
 .x-h1{font-family:'Archivo';font-weight:700;font-size:clamp(34px,4.8vw,60px);line-height:1.06;letter-spacing:-.018em;margin-top:20px}
 .x-h1 em{font-style:normal;color:var(--teal)}
@@ -488,6 +488,6 @@ section.x{padding:92px 0 0}
 .report .rfoot b{color:var(--tinte);font-weight:600}
 
 /* Freisteller-Porträt (Hero) + einspaltige Über-mich-Sektion */
-.x-portrait.frei{aspect-ratio:auto;overflow:visible;border:none;background:none}
+.x-portrait.frei{aspect-ratio:auto;overflow:visible;border:none;background:none;max-width:none}
 .x-portrait.frei img{width:100%;height:auto;object-fit:contain;object-position:center}
 .x-ueber.solo{grid-template-columns:1fr}

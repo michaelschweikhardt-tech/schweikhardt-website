@@ -75,6 +75,19 @@ gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</scrip
 
 <section class="x"><div class="wrap">
   <div class="x-kopf">
+    <div class="lbl">KI-Creatives</div>
+    <h2>Reels aus dem Studio.</h2>
+    <p>Ad-Creatives für <b>Micky Oye</b> — KI-generiert, teils vollständig über einen <b>autonomen Workflow direkt aus den Shop-Bildern</b> erzeugt: vom Produktfoto zum fertigen Social-Reel. Bewegtbild bei Hover.</p>
+  </div>
+  <div class="reels">
+    <div class="reel" data-reel><img class="poster" src="assets/reels/mo-palmdream.jpg" alt="Micky Oye — Palm Dream"><video src="assets/reels/mo-palmdream.mp4" muted loop playsinline preload="none"></video><div class="badge"><span class="d"></span> Reel</div><div class="cap"><b>Palm Dream</b> · „Sunset-Feeling ohne Flugticket"</div></div>
+    <div class="reel" data-reel><img class="poster" src="assets/reels/mo-airways.jpg" alt="Micky Oye — Airways"><video src="assets/reels/mo-airways.mp4" muted loop playsinline preload="none"></video><div class="badge"><span class="d"></span> Reel</div><div class="cap"><b>MO Airways</b> · Dschungel-Mood</div></div>
+    <div class="reel" data-reel><img class="poster" src="assets/reels/mo-shirt.jpg" alt="Micky Oye — Aloha Shirt"><video src="assets/reels/mo-shirt.mp4" muted loop playsinline preload="none"></video><div class="badge"><span class="d"></span> Reel</div><div class="cap"><b>Aloha Shirt</b> · Produkt-Reel aus Shop-Bildern</div></div>
+  </div>
+</div></section>
+
+<section class="x"><div class="wrap">
+  <div class="x-kopf">
     <div class="lbl">Zuletzt</div>
     <h2>Beispiel aus dem Studio.</h2>
     <p><b>Cafe Galliano, Treviso:</b> Brand-Weihnachtssong und Social-Reel — komponiert und per KI in einen 1950s-Nightclub-Filmlook umgesetzt. Eine ausführliche Werkschau ist in Arbeit; sprich mich für Beispiele gern direkt an.</p>
@@ -94,5 +107,17 @@ gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</scrip
   <div>© 2026 Michael Schweikhardt — Berlin</div>
   <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cc="show-preferencesModal">Cookie-Einstellungen</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
 </div></footer>
+<script>
+(function(){
+  var touch=matchMedia('(hover:none)').matches;
+  document.querySelectorAll('.reel[data-reel]').forEach(function(r){
+    var v=r.querySelector('video'); if(!v)return;
+    function play(){ v.play().then(function(){r.classList.add('playing');}).catch(function(){}); }
+    function stop(){ v.pause(); try{v.currentTime=0;}catch(e){} r.classList.remove('playing'); }
+    if(touch){ r.addEventListener('click',function(){ r.classList.contains('playing')?stop():play(); }); }
+    else { r.addEventListener('mouseenter',play); r.addEventListener('mouseleave',stop); }
+  });
+})();
+</script>
 </body>
 </html>

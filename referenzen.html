@@ -73,12 +73,19 @@ gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</scrip
   </div>
   <div class="case-teasers" style="margin-bottom:34px">
     <a class="teaser" href="case-masshoff-marketing.html"><div class="timg"><img src="assets/cases/masshoff-marketing.jpg" alt="Masshoff Drums"></div><div class="tb"><div class="tk">Paid Social · Email · Website</div><h3>Masshoff Drums</h3><p>Social-Ads, Mailings &amp; Relaunch — maßgeblich zur Umsatzverdopplung.</p></div></a>
+    <div class="teaser"><div class="timg"><img src="assets/cases/micky-oye.jpg" alt="Micky Oye"></div><div class="tb"><div class="tk">Paid Social · Creative</div><h3>Micky Oye</h3><p>Authentic Aloha Shirts — Meta Ads &amp; Creative-Produktion.</p></div></div>
+    <div class="teaser"><div class="timg"><img src="assets/cases/sofaconcerts.jpg" alt="SofaConcerts"></div><div class="tb"><div class="tk">Paid Social</div><h3>SofaConcerts</h3><p>Booking-Plattform — Paid Social &amp; eigenes Creative-Reporting (saatori).</p></div></div>
+    <div class="teaser"><div class="timg"><img src="assets/cases/songgefluester.jpg" alt="Songgeflüster"></div><div class="tb"><div class="tk">Paid Social</div><h3>Songgeflüster</h3><p>Personalisierte Musik-Geschenke — Paid Social.</p></div></div>
   </div>
-  <div class="reflist">
+  <div class="reels-head">Reels · KI-generierte Ad-Creatives (Micky Oye)</div>
+  <div class="reels">
+    <div class="reel" data-reel><img class="poster" src="assets/reels/mo-palmdream.jpg" alt="Micky Oye — Palm Dream"><video src="assets/reels/mo-palmdream.mp4" muted loop playsinline preload="none"></video><div class="badge"><span class="d"></span> Reel</div><div class="cap"><b>Palm Dream</b> · „Sunset-Feeling ohne Flugticket"</div></div>
+    <div class="reel" data-reel><img class="poster" src="assets/reels/mo-airways.jpg" alt="Micky Oye — Airways"><video src="assets/reels/mo-airways.mp4" muted loop playsinline preload="none"></video><div class="badge"><span class="d"></span> Reel</div><div class="cap"><b>MO Airways</b> · Dschungel-Mood</div></div>
+    <div class="reel" data-reel><img class="poster" src="assets/reels/mo-shirt.jpg" alt="Micky Oye — Aloha Shirt"><video src="assets/reels/mo-shirt.mp4" muted loop playsinline preload="none"></video><div class="badge"><span class="d"></span> Reel</div><div class="cap"><b>Aloha Shirt</b> · Produkt-Reel aus Shop-Bildern</div></div>
+  </div>
+  <p class="refnote" style="margin-bottom:8px">KI-generiert — teils vollständig über einen autonomen Workflow aus den Shop-Bildern erzeugt. Bewegtbild bei Hover.</p>
+  <div class="reflist" style="margin-top:24px">
     <div class="row"><span class="nm">Bridge &amp; Tunnel</span><span class="ds">Nachhaltige Mode — Paid Social &amp; Marketing Automation, seit 2019.</span></div>
-    <div class="row"><span class="nm">SofaConcerts</span><span class="ds">Booking-Plattform — Paid Social &amp; Reporting-Tool saatori.</span></div>
-    <div class="row"><span class="nm">Songgeflüster</span><span class="ds">Personalisierte Musik-Geschenke — Paid Social.</span></div>
-    <div class="row"><span class="nm">Micky Oye</span><span class="ds">Authentic Aloha Shirts — Meta Ads &amp; Creative-Produktion.</span></div>
     <div class="row"><span class="nm">Woodlike Ocean</span><span class="ds">Nachhaltige Bademode — Paid Social Performance.</span></div>
     <div class="row"><span class="nm">Hydrofoil</span><span class="ds">Watersports — Paid Social.</span></div>
     <div class="row"><span class="nm">Addition</span><span class="ds">Sustainable Fashion — Instagram &amp; Facebook Ads.</span></div>
@@ -168,5 +175,21 @@ gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</scrip
   <div>© 2026 Michael Schweikhardt — Berlin</div>
   <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cc="show-preferencesModal">Cookie-Einstellungen</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
 </div></footer>
+<script>
+(function(){
+  var touch=matchMedia('(hover:none)').matches;
+  document.querySelectorAll('.reel[data-reel]').forEach(function(r){
+    var v=r.querySelector('video'); if(!v)return;
+    function play(){ v.play().then(function(){r.classList.add('playing');}).catch(function(){}); }
+    function stop(){ v.pause(); try{v.currentTime=0;}catch(e){} r.classList.remove('playing'); }
+    if(touch){
+      r.addEventListener('click',function(){ r.classList.contains('playing')?stop():play(); });
+    } else {
+      r.addEventListener('mouseenter',play);
+      r.addEventListener('mouseleave',stop);
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -110,12 +110,24 @@ gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</scrip
 <script>
 (function(){
   var touch=matchMedia('(hover:none)').matches;
+  var IM='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><line x1="16" y1="9" x2="22" y2="15"/><line x1="22" y1="9" x2="16" y2="15"/></svg>';
+  var IO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8a5 5 0 0 1 0 8"/><path d="M18.8 5.5a9 9 0 0 1 0 13"/></svg>';
   document.querySelectorAll('.reel[data-reel]').forEach(function(r){
     var v=r.querySelector('video'); if(!v)return;
+    v.muted=true;
+    var btn=document.createElement('button');
+    btn.className='sound'; btn.type='button'; btn.setAttribute('aria-label','Ton an/aus'); btn.innerHTML=IM;
+    r.appendChild(btn);
+    function icon(){ btn.innerHTML=v.muted?IM:IO; }
     function play(){ v.play().then(function(){r.classList.add('playing');}).catch(function(){}); }
-    function stop(){ v.pause(); try{v.currentTime=0;}catch(e){} r.classList.remove('playing'); }
-    if(touch){ r.addEventListener('click',function(){ r.classList.contains('playing')?stop():play(); }); }
-    else { r.addEventListener('mouseenter',play); r.addEventListener('mouseleave',stop); }
+    function stop(){ v.pause(); try{v.currentTime=0;}catch(e){} v.muted=true; icon(); r.classList.remove('playing'); }
+    btn.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); v.muted=!v.muted; if(!v.muted) play(); icon(); });
+    if(touch){
+      r.addEventListener('click',function(){ r.classList.contains('playing')?stop():play(); });
+    } else {
+      r.addEventListener('mouseenter',play);
+      r.addEventListener('mouseleave',stop);
+    }
   });
 })();
 </script>

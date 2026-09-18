@@ -1,0 +1,97 @@
+/* oona.schweikhardt.de — eigenständiges Stylesheet (Design nach Oonas Cargo-Seite, freie Schriften) */
+@font-face{font-family:"Grotesk";src:url(/oona/fonts/inter-tight-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Sans";src:url(/oona/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Display";src:url(/oona/fonts/archivo-latin-standard-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:"Mono";src:url(/oona/fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Mono";src:url(/oona/fonts/ibm-plex-mono-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Mono";src:url(/oona/fonts/ibm-plex-mono-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+
+html{font-size:12.96px;-webkit-text-size-adjust:100%}
+*{--font-scale:1}
+body{margin:0;background:#fff;color:rgba(0,0,0,.75);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:active,.mi a:active{opacity:.7}
+b,strong{font-weight:700}
+
+/* Textstile */
+.bodycopy{font-family:"Grotesk",system-ui,sans-serif;font-weight:300;font-size:1.15rem;line-height:1.35;color:rgba(0,0,0,.75)}
+.bodycopy a{color:rgba(0,0,0,.75)}
+.caption{font-family:"Sans",system-ui,sans-serif;font-weight:500;font-size:calc(1.2rem*var(--font-scale));line-height:1.2;color:rgba(0,0,0,.85);display:block;margin-top:.5em;text-align:left}
+.grid .caption{margin-bottom:2em}
+.go-back{font-family:"Display",system-ui,sans-serif;font-weight:900;font-stretch:106%;font-size:calc(1.1rem*var(--font-scale));line-height:1.35;color:#000;display:block;letter-spacing:0}
+.text{font-family:"Mono",ui-monospace,monospace;font-weight:400;font-size:calc(1.15rem*var(--font-scale));line-height:1.15;color:#000;display:block}
+.text-2{font-family:"Grotesk",system-ui,sans-serif;font-weight:200;font-size:calc(2.2rem*var(--font-scale));line-height:1.35;letter-spacing:.033em;color:#000;display:block}
+span:not([class])[style*="--font-scale"]{font-size:calc(1em*var(--font-scale))}
+a.active,.page a.active{color:#18ff00}
+.no-wrap{white-space:nowrap}
+
+/* Navigation */
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;background:#fff;padding:.8rem;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:6.2rem;white-space:nowrap}
+.nav .go-back{display:inline-block}
+.nav-center{text-align:center}.nav-right{text-align:right}
+
+/* Seitenrahmen */
+main.page{position:relative;display:flex;flex-direction:column;justify-content:flex-start}
+.page-layout{display:flex;flex-direction:column;align-items:flex-start;width:100%;box-sizing:border-box;padding:0}
+.page-content{width:100%;box-sizing:border-box;padding:0;text-align:left;border:0 solid rgba(0,0,0,.85)}
+.backdrop{position:fixed;inset:0;z-index:-1;background:#fff center/cover no-repeat}
+.bd-home{background-image:url(/oona/media/bg-home-d.webp)}
+.bd-info{background-image:url(/oona/media/bg-info-d.webp)}
+@media (max-aspect-ratio:4/5){.bd-home{background-image:url(/oona/media/bg-home-m.webp)}.bd-info{background-image:url(/oona/media/bg-info-m.webp)}}
+
+/* Spalten */
+.cs{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut)}
+.cu{grid-column:span var(--span);min-width:0}
+
+/* Medien */
+figure.mi{margin:0;display:inline-block;vertical-align:top;max-width:100%;box-sizing:border-box}
+figure.mi a{display:block;color:inherit}
+figure.mi img,figure.mi video{display:block;width:100%;height:auto;box-sizing:border-box}
+figure.zoom img{cursor:zoom-in}
+.gal{display:block;width:100%}
+.gal-abs{position:relative;aspect-ratio:var(--ar)}
+.gi{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h)}
+.gi img,.gi video{width:100%;height:100%!important;object-fit:cover}
+.grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));column-gap:var(--cg);row-gap:var(--rg);align-items:start}
+.grid .mi{display:block}
+.slideshow{position:relative;aspect-ratio:var(--ar)}
+.slideshow .slide{position:absolute;inset:0;display:block;visibility:hidden}
+.slideshow .slide.on{visibility:visible}
+.slideshow .slide img{width:100%;height:100%;object-fit:contain;background:none}
+
+/* Rechtliches */
+.legal{text-align:center;font-family:"Display",system-ui,sans-serif;font-weight:500;font-size:.8rem;padding:1.2rem 0 1.6rem;color:#fff;mix-blend-mode:difference;position:relative;z-index:1}
+.legal a{color:#fff}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:#fff;display:flex;align-items:center;justify-content:center;padding:3rem;box-sizing:border-box;cursor:zoom-out}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lb button{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(87,87,87,.35);color:#fff;font-size:22px;line-height:44px;cursor:pointer;padding:0}
+.lb .prev{left:15px}.lb .next{right:15px}
+.lb .x{top:15px;right:15px;transform:none}
+
+/* Mobil: Galerien bleiben proportional wie im Original, Text wird lesbar */
+@media (max-width:700px){
+  html{font-size:8px}
+  .nav{display:flex;left:0;right:0;justify-content:space-between;gap:12px;padding:10px 12px;column-gap:12px}
+  .nav .go-back{font-size:13px}
+  .nav .mail{display:none}
+  .nav-u:nth-child(3){display:none}
+  .bodycopy{font-size:13px}
+  .text{font-size:calc(12px*var(--font-scale))}
+  .text-2{font-size:calc(19px*var(--font-scale))}
+  .caption{font-size:calc(11px*var(--font-scale))}
+  .go-back{font-size:calc(12px*var(--font-scale))}
+  .legal{font-size:10px}
+  .p-home .bodycopy{font-size:1.15rem}
+  .cs{column-gap:var(--mgut)}
+  .cs.stack{grid-template-columns:minmax(0,1fr);row-gap:1.5rem}
+  .cs.stack .cu{grid-column:auto}
+  .cs.stack .cu.empty{display:none}
+  .gal-abs{aspect-ratio:var(--mar)}
+  .gi{left:var(--mx);top:var(--my);width:var(--mw);height:var(--mh)}
+  .slideshow{aspect-ratio:var(--mar)}
+  .grid{column-gap:var(--mcg);row-gap:var(--mrg)}
+  .lb{padding:10px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}

@@ -51,7 +51,7 @@ jobs:
             open -u '$SFTP_USER','$SFTP_PASS' sftp://$SFTP_HOST:22;
             mkdir -p -f '$TARGET';
             mirror -R --no-perms --delete --ignore-time --parallel=4 --verbose=1 oona/ '$TARGET';
-            mirror -R --no-perms --only-newer=off --parallel=4 --verbose=1 --include-glob '*.html' --include-glob '*.css' --include-glob '*.js' --include-glob '*.xml' --include-glob '.htaccess' --exclude-glob '*' oona/ '$TARGET';
+            mirror -R --no-perms --parallel=4 --verbose=1 --include-glob '*.html' --include-glob '*.css' --include-glob '*.js' --include-glob '*.xml' --include-glob '.htaccess' oona/ '$TARGET';
           "
 
       - name: Live-Check

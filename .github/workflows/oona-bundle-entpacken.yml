@@ -1,7 +1,7 @@
 name: Oona-Bundle entpacken
 
 # Einmal-Werkzeug: setzt das per Web-Upload in Teilen hochgeladene Paket (oona-bundle/)
-# zu oona/ + oona-src/ zusammen und committet das Ergebnis.
+# zusammen und legt es über oona/ + oona-src/ (Update-Pakete überschreiben nur enthaltene Dateien).
 on:
   push:
     branches: [ main ]
@@ -20,7 +20,6 @@ jobs:
         run: |
           cat oona-bundle/oona.tar.part-* > /tmp/oona.tar
           echo "$(cat oona-bundle/oona.tar.sha256)  /tmp/oona.tar" | sha256sum -c -
-          rm -rf oona oona-src
           tar -xf /tmp/oona.tar
           git rm -rq oona-bundle
           rm -rf oona-bundle

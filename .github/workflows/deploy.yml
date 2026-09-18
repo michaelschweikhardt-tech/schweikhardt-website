@@ -1,9 +1,16 @@
 name: Deploy zu Strato (SFTP, additiv)
 
 # Läuft bei jedem Push auf main und kann manuell gestartet werden.
+# Oonas Portfolio (oona/) hat einen eigenen Workflow: deploy-oona.yml
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'oona/**'
+      - 'oona-src/**'
+      - 'oona-bundle/**'
+      - '.github/workflows/deploy-oona.yml'
+      - '.github/workflows/oona-bundle-entpacken.yml'
   workflow_dispatch:
 
 concurrency:
@@ -31,6 +38,9 @@ jobs:
             --exclude 'design-manual.html' \
             --exclude 'CNAME' \
             --exclude '.DS_Store' \
+            --exclude '/oona/' \
+            --exclude '/oona-src/' \
+            --exclude '/oona-bundle/' \
             ./ _site/
           echo "Zu deployende Dateien:"; find _site -type f | sort
 

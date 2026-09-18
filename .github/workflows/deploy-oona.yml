@@ -1,0 +1,63 @@
+name: Deploy Oona-Portfolio (schweikhardt.de/oona/)
+
+# Spiegelt nur den Ordner oona/ nach <Webroot>/oona auf Strato.
+# --delete wirkt ausschließlich innerhalb von oona/ – der Rest des Webspace bleibt unberührt.
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'oona/**', '.github/workflows/deploy-oona.yml' ]
+  workflow_dispatch:
+  workflow_run:
+    workflows: [ 'Oona-Bundle entpacken' ]
+    types: [ completed ]
+
+concurrency:
+  group: strato-deploy-oona
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Prüfen
+        run: |
+          test -f oona/index.html || { echo "::error::oona/index.html fehlt"; exit 1; }
+          echo "Dateien: $(find oona -type f | wc -l), Größe: $(du -sh oona | cut -f1)"
+
+      - name: SFTP-Upload nach <Webroot>/oona
+        env:
+          SFTP_HOST: ${{ secrets.STRATO_SFTP_HOST }}
+          SFTP_USER: ${{ secrets.STRATO_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.STRATO_SFTP_PASSWORD }}
+          WEBROOT:   ${{ vars.STRATO_WEBROOT }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          : "${WEBROOT:=.}"
+          TARGET="$WEBROOT/oona"
+          echo "Ziel: $TARGET"
+          # Medien/Fonts: stabile Dateinamen -> Größenvergleich reicht.
+          # HTML/CSS/JS/XML/.htaccess: immer neu (klein).
+          lftp -c "
+            set sftp:auto-confirm yes;
+            set net:max-retries 3;
+            set net:timeout 30;
+            open -u '$SFTP_USER','$SFTP_PASS' sftp://$SFTP_HOST:22;
+            mkdir -p -f '$TARGET';
+            mirror -R --no-perms --delete --ignore-time --parallel=4 --verbose=1 oona/ '$TARGET';
+            mirror -R --no-perms --only-newer=off --parallel=4 --verbose=1 --include-glob '*.html' --include-glob '*.css' --include-glob '*.js' --include-glob '*.xml' --include-glob '.htaccess' --exclude-glob '*' oona/ '$TARGET';
+          "
+
+      - name: Live-Check
+        run: |
+          sleep 3
+          for p in "" projekte/ info/ genzine/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://schweikhardt.de/oona/$p")
+            echo "https://schweikhardt.de/oona/$p -> $code"
+          done

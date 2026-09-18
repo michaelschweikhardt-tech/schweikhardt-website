@@ -1,0 +1,33 @@
+name: Oona-Bundle entpacken
+
+# Einmal-Werkzeug: setzt das per Web-Upload in Teilen hochgeladene Paket (oona-bundle/)
+# zu oona/ + oona-src/ zusammen und committet das Ergebnis.
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'oona-bundle/READY' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zusammensetzen, prüfen, entpacken
+        run: |
+          cat oona-bundle/oona.tar.part-* > /tmp/oona.tar
+          echo "$(cat oona-bundle/oona.tar.sha256)  /tmp/oona.tar" | sha256sum -c -
+          rm -rf oona oona-src
+          tar -xf /tmp/oona.tar
+          git rm -rq oona-bundle
+          rm -rf oona-bundle
+      - name: Committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Oona-Portfolio: oona/ (Website) + oona-src/ (Quellen) entpackt"
+          git push

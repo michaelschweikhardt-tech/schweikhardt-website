@@ -294,7 +294,7 @@ def nav_html(active):
 
 
 def og_image(purl, ctx_first_hash):
-    return f'{BASE_URL}/media/{ctx_first_hash}-1280.webp' if ctx_first_hash else ''
+    return f'{BASE_URL}/media/{ctx_first_hash}-{[w for w in minfo[ctx_first_hash]["widths"] if w <= 1280][-1]}.webp' if ctx_first_hash else ''
 
 
 def build_page(purl):

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Consent Mode Default (vor GTM) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WZC6K2B');</script>
+<!-- CookieConsent (self-hosted CMP) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+<script defer src="/assets/consent/consent-init.js"></script>
+<title>CMS oder Claude + GitHub: WordPress vs. statische Seite mit KI — Michael Schweikhardt</title>
+<meta name="description" content="WordPress, Baukasten oder statische Seite im Git-Repo mit KI-Pflege? Ehrlicher Vergleich: Kosten, Sicherheit, Tempo, Kontrolle — und die Grenzen. Mit Praxis von schweikhardt.de.">
+<meta property="og:title" content="CMS oder Claude + GitHub: WordPress vs. statische Seite mit KI-Pflege">
+<meta property="og:description" content="Wann WordPress die bessere Wahl bleibt und wann eine statische Seite im Git-Repo mit KI-Pflege schneller, sicherer und günstiger ist.">
+<meta property="og:image" content="https://schweikhardt.de/assets/cases/blog-cms-vs-claude-github.png">
+<link rel="icon" type="image/png" href="assets/schweikhardt-stern.png">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-400.woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CMS oder Claude + GitHub: WordPress, Baukasten oder statische Seite mit KI-Pflege?", "description": "WordPress und Baukasten gegen eine statische Seite im Git-Repo mit KI-Pflege: Kosten, Sicherheit, Tempo, Kontrolle — und wann das CMS die bessere Wahl bleibt. Mit Praxis von schweikhardt.de.", "author": {"@type": "Person", "name": "Michael Schweikhardt", "url": "https://schweikhardt.de/"}, "publisher": {"@type": "Person", "name": "Michael Schweikhardt"}, "datePublished": "2026-10-16", "dateModified": "2026-10-16", "image": "https://schweikhardt.de/assets/cases/blog-cms-vs-claude-github.png", "inLanguage": "de", "mainEntityOfPage": "https://schweikhardt.de/blog-cms-vs-claude-github.html"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Ist eine statische Website mit Git wirklich besser als WordPress?", "acceptedAnswer": {"@type": "Answer", "text": "Nicht grundsätzlich, sondern für einen bestimmten Typ Seite: überschaubare Firmenwebsite mit Blog, wenige Änderer, keine Shop- oder Login-Funktion. Dort gewinnt sie bei Geschwindigkeit, Angriffsfläche und laufenden Kosten. Sobald mehrere Redakteure ohne Technik-Affinität arbeiten oder du Shop, Mitgliederbereich oder Buchungslogik brauchst, ist ein CMS meist die ehrlichere Wahl."}}, {"@type": "Question", "name": "Kann ich meine Website wirklich mit Claude pflegen, ohne programmieren zu können?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, mit Einschränkung. Du musst keinen Code schreiben, aber beurteilen können, ob das Ergebnis stimmt: Seite im Browser prüfen, Formulare testen, wissen, wo das Backup liegt. Die Bedienung von Git (Änderungen speichern, hochladen, zurückrollen) ist erlernbar, aber kein Klick-Erlebnis wie im WordPress-Editor. Wer das nicht will, holt sich eine zweite Person für Abnahme und Betrieb dazu."}}, {"@type": "Question", "name": "Ist eine statische Seite sicherer als WordPress?", "acceptedAnswer": {"@type": "Answer", "text": "Die Angriffsfläche ist deutlich kleiner: keine Datenbank, kein Login-Bereich, keine Plugins auf dem Server. Laut Patchstack stammen 91 % der 2025 gemeldeten WordPress-Schwachstellen aus Plugins. Absolut sicher ist trotzdem nichts: Zugangsdaten, Drittanbieter-Skripte (Tracking, Formulare) und das Repository selbst müssen sauber abgesichert sein."}}, {"@type": "Question", "name": "Was passiert, wenn Claude oder GitHub morgen nicht mehr verfügbar sind?", "acceptedAnswer": {"@type": "Answer", "text": "Deine Seite bleibt online, denn ausgeliefert werden fertige HTML-Dateien auf deinem normalen Webhosting. Verloren geht nur der bequeme Pflege-Weg. Der Code ist ein Ordner mit Standard-Dateien und lässt sich von jedem Entwickler oder mit jedem anderen Werkzeug weiterpflegen. Das ist ein echter Vorteil gegenüber Baukästen, bei denen die Seite am Anbieter hängt."}}]}
+</script>
+</head>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZC6K2B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav><div class="wrap nav-i">
+  <a class="marke wortmarke" href="index.html"><span class="wm-b">Schweikhardt</span><span class="wm-r">Digital Concepts</span></a>
+  <input type="checkbox" id="navtog" class="navtog" aria-label="Menü">
+  <label for="navtog" class="burger" aria-label="Menü öffnen"><span></span><span></span><span></span></label>
+  <div class="nav-r">
+    <a href="digital.html">Beratung</a>
+    <a href="paid-social.html">Marketing</a>
+    <a href="retro.html">Studio</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="blog.html">Blog</a>
+    <a href="vita.html">Werdegang</a>
+    <a class="cta" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch</a>
+  </div>
+</div></nav>
+
+<header class="x-hero"><div class="wrap article">
+  <a class="zurueck-s" href="blog.html">← Blog</a>
+  <div class="x-eyebrow">Webdesign &amp; KI · Deep-Dive</div>
+  <h1 class="x-h1">CMS oder Claude + GitHub: <em>WordPress, Baukasten oder statische Seite mit KI-Pflege?</em></h1>
+  <div class="ameta">16. Oktober 2026 · 8 Min. Lesezeit</div>
+  <div class="tagchips"><span class="tagchip">Webdesign &amp; KI</span><span class="tagchip">KI</span><span class="tagchip">Deep-Dive</span></div>
+</div></header>
+
+<section class="x"><div class="wrap"><div class="article">
+  <div class="tldr">
+    <div class="l">Das Wichtigste in Kürze</div>
+    <p>Für eine <b>überschaubare Firmenwebsite mit Blog</b> ist eine statische Seite im Git-Repo, die du mit KI pflegst, oft <b>schneller, sicherer und günstiger im Betrieb</b> als WordPress. Für <b>Shops, Mitgliederbereiche und Redaktionen mit mehreren Köpfen</b> ist sie die falsche Basis, dort gewinnt das CMS. Entscheidend ist nicht die Technik, sondern die Frage: <b>Wer ändert wie oft was — und wer trägt die Verantwortung für Betrieb und Abnahme?</b></p>
+  </div>
+
+  <h2>Warum diese Frage überhaupt?</h2>
+  <p>Weil WordPress der Standard ist: Laut W3Techs läuft es (Stand Oktober 2026) auf rund 40 % aller Websites weltweit (39,7 %), bei Seiten mit bekanntem CMS sind es knapp 59 % (58,5 %). Wenn alle es nutzen, fragt kaum jemand, ob es für die eigene Seite passt. Ich habe meine eigene Seite von WordPress auf eine statische Seite im Git-Repo umgestellt (Ablauf im <a class="inl" href="blog-relaunch-mit-ki.html">Relaunch-Artikel</a>). Das ist kein Glaubensbekenntnis, sondern ein Datenpunkt. Hier der Vergleich, ohne Missionieren.</p>
+
+  <h2>Was ist die Alternative zu WordPress konkret?</h2>
+  <p>Eine statische Seite besteht aus fertigen HTML-, CSS- und Bilddateien. Es gibt keine Datenbank, keinen Login-Bereich und keine Plugins auf dem Server. Die Dateien liegen in einem <b>Git-Repository</b> (jede Änderung ist ein protokollierter Commit). Bei mir funktioniert der Livegang so: Änderung committen, pushen, eine <b>GitHub-Action</b> lädt die Dateien automatisch per SFTP auf das normale Strato-Hosting. Die Zugangsdaten liegen als GitHub-Secrets, nicht im Code, und der Upload ist rein additiv: Es wird nichts auf dem Server gelöscht.</p>
+  <p>Die Pflege übernimmt <b>Claude</b>: Ich beschreibe, was sich ändern soll („neuer Blogartikel, Karte in die Übersicht, Filter ergänzen“), die KI ändert die Dateien, ich prüfe das Ergebnis und gebe frei. Das ist der Unterschied zu „Website mit KI bauen lassen“: Es geht um den <b>dauerhaften Betrieb</b>, nicht um den einmaligen Bau.</p>
+
+  <h2>Wo ist die statische Seite im Vorteil?</h2>
+  <ul>
+    <li><b>Tempo.</b> Der Server liefert fertige Dateien aus, statt bei jedem Aufruf Seiten aus einer Datenbank zusammenzubauen. Das ist ein guter Start für die Core Web Vitals; garantiert ist es nicht, unkomprimierte Bilder bremsen auch eine statische Seite.</li>
+    <li><b>Sicherheit.</b> Wo keine Plugins laufen, kann keines veralten. Laut Patchstack stammen 91 % der 2025 gemeldeten WordPress-Schwachstellen aus Plugins. Zudem hatten laut Patchstack 46 % der 2025 gemeldeten Lücken zum Zeitpunkt der Veröffentlichung noch keinen Patch. Das trifft eine statische Seite schlicht nicht.</li>
+    <li><b>Kosten im Betrieb.</b> Keine Plugin-Lizenzen, kein Wartungsvertrag für Updates, kein Ticket für eine Textänderung. Es bleiben Domain, Hosting (bei Strato ab ca. 5 € im Monat, Aktionspreise teils günstiger), ein KI-Abo und deine Zeit. Konkrete Spannen für alle Wege findest du im <a class="inl" href="blog-website-kosten-2026.html">Kostenvergleich</a>.</li>
+    <li><b>Kontrolle und Nachvollziehbarkeit.</b> Jede Änderung ist ein Commit mit Datum und Inhalt. Etwas kaputt? Auf den letzten guten Stand zurück. Das ist ein besseres Sicherheitsnetz als „Plugin-Update hat die Seite zerschossen“.</li>
+    <li><b>Unabhängigkeit.</b> Die Seite sind Standarddateien. Sie hängt weder an einem Baukasten-Anbieter noch an einem bestimmten Theme.</li>
+  </ul>
+
+  <h2>Wo ist WordPress (oder ein Baukasten) die bessere Wahl?</h2>
+  <p>Hier wird es unbequem für die eigene These, deshalb ehrlich:</p>
+  <ul>
+    <li><b>Mehrere Redakteure ohne Technik-Affinität.</b> Ein Editor mit Vorschau, Rollen und Freigaben schlägt Git und Prompts. Wenn die Marketing-Praktikantin morgen einen Artikel veröffentlichen soll, ist das CMS der richtige Ort.</li>
+    <li><b>Shops, Mitgliederbereiche, Buchungen mit eigener Logik.</b> Dafür brauchst du Datenbank und Server-Logik. Eine statische Seite kann dafür externe Dienste einbinden, ersetzt aber kein Shopsystem.</li>
+    <li><b>Hoher Änderungsdruck durch viele Hände.</b> Je mehr Menschen gleichzeitig Inhalte ändern, desto wertvoller werden Rollen, Revisionen und ein Standard-Redaktionsablauf.</li>
+    <li><b>Wenn niemand Verantwortung übernimmt.</b> Eine statische Seite braucht jemanden, der abnimmt und im Notfall das Backup findet. Ein Baukasten nimmt dir einen Teil dieser Verantwortung ab (und lässt sich das bezahlen).</li>
+  </ul>
+  <p>Ein Baukasten (Wix, Jimdo & Co.) ist die bequemste Lösung für den Einstieg: Hosting, Editor und Updates in einem. Der Preis ist die Bindung an den Anbieter und begrenzte Freiheit bei Technik, Tracking und Performance.</p>
+
+  <h2>Und was ist mit GitHub Pages als Hosting?</h2>
+  <p>GitHub Pages ist kostenlos und für Entwicklerseiten beliebt, aber für Unternehmen mit Vorsicht zu genießen. Die GitHub-Dokumentation nennt für veröffentlichte Seiten eine Grenze von 1 GB und ein weiches Limit von 100 GB Traffic pro Monat. Außerdem ist Pages ausdrücklich nicht als kostenloses Hosting für den Betrieb eines Unternehmens oder eines Shops gedacht. Ich nutze GitHub deshalb für <b>Versionierung und Deploy</b>, ausgeliefert wird von normalem Webhosting.</p>
+
+  <h2>Wie entscheide ich in zehn Minuten?</h2>
+  <p>Vier Fragen reichen als Entscheidungshilfe:</p>
+  <ul>
+    <li><b>Wie oft ändert sich die Seite, und von wie vielen Personen?</b> Selten und eine Person: statisch. Täglich und ein Team: CMS.</li>
+    <li><b>Braucht die Seite Datenbank-Funktionen?</b> Shop, Login, Kundenbereich: CMS oder Shopsystem. Kontaktformular und Terminbuchung: gehen auch mit externen Diensten.</li>
+    <li><b>Wer nimmt ab?</b> Wenn du selbst im Browser prüfen und den Livegang verantworten kannst: passt. Wenn nicht, brauchst du jemanden dafür, egal bei welchem System.</li>
+    <li><b>Was ist dir wichtiger: Bequemlichkeit oder Kontrolle?</b> Baukasten und CMS sind bequemer. Das Repo gibt dir mehr Kontrolle.</li>
+  </ul>
+  <p>Mein Fazit: Für die klassische Firmenwebsite mit Leistungsseiten, Referenzen und einem Blog ist die statische Seite mit KI-Pflege heute eine ernstzunehmende, oft bessere Alternative. Aber sie ist <b>kein Ersatz für jedes WordPress</b>, und wer sie wählt, übernimmt die Verantwortung, die vorher das Plugin-Update-Roulette hatte. Eine Seite ist auch nur dann gut, wenn sie Anfragen bringt. Dazu mehr in <a class="inl" href="blog-landingpage-cro.html">Landingpage &amp; CRO</a>.</p>
+
+  <div class="faq">
+    <h2>Häufige Fragen</h2>
+    <details><summary>Ist eine statische Website mit Git wirklich besser als WordPress?</summary><p>Nicht grundsätzlich, sondern für einen bestimmten Typ Seite: überschaubare Firmenwebsite mit Blog, wenige Änderer, keine Shop- oder Login-Funktion. Dort gewinnt sie bei Geschwindigkeit, Angriffsfläche und laufenden Kosten. Sobald mehrere Redakteure ohne Technik-Affinität arbeiten oder du Shop, Mitgliederbereich oder Buchungslogik brauchst, ist ein CMS meist die ehrlichere Wahl.</p></details>
+    <details><summary>Kann ich meine Website wirklich mit Claude pflegen, ohne programmieren zu können?</summary><p>Ja, mit Einschränkung. Du musst keinen Code schreiben, aber beurteilen können, ob das Ergebnis stimmt: Seite im Browser prüfen, Formulare testen, wissen, wo das Backup liegt. Die Bedienung von Git (Änderungen speichern, hochladen, zurückrollen) ist erlernbar, aber kein Klick-Erlebnis wie im WordPress-Editor. Wer das nicht will, holt sich eine zweite Person für Abnahme und Betrieb dazu.</p></details>
+    <details><summary>Ist eine statische Seite sicherer als WordPress?</summary><p>Die Angriffsfläche ist deutlich kleiner: keine Datenbank, kein Login-Bereich, keine Plugins auf dem Server. Laut Patchstack stammen 91 % der 2025 gemeldeten WordPress-Schwachstellen aus Plugins. Absolut sicher ist trotzdem nichts: Zugangsdaten, Drittanbieter-Skripte (Tracking, Formulare) und das Repository selbst müssen sauber abgesichert sein.</p></details>
+    <details><summary>Was passiert, wenn Claude oder GitHub morgen nicht mehr verfügbar sind?</summary><p>Deine Seite bleibt online, denn ausgeliefert werden fertige HTML-Dateien auf deinem normalen Webhosting. Verloren geht nur der bequeme Pflege-Weg. Der Code ist ein Ordner mit Standard-Dateien und lässt sich von jedem Entwickler oder mit jedem anderen Werkzeug weiterpflegen. Das ist ein echter Vorteil gegenüber Baukästen, bei denen die Seite am Anbieter hängt.</p></details>
+  </div>
+
+  <div class="author-box">
+    <img src="assets/portrait-neutral.jpg" alt="Michael Schweikhardt">
+    <div class="t"><b>Michael Schweikhardt</b><p>25 Jahre an der Schnittstelle von Marketing, Produkt und KI. Baut Kampagnen, Produkte und eigene Tools — u. a. saatori. Pflegt die eigene Website mit KI und Git statt mit Plugin-Zoo.</p></div>
+  </div>
+</div></div></section>
+
+<section class="x-finale"><div class="wrap">
+  <div class="lbl">Kontakt</div>
+  <h2>CMS behalten oder wechseln?</h2>
+  <p>30 Minuten, unverbindlich — ich schaue mir deine Seite und deinen Änderungsbedarf an und sage ehrlich, ob sich ein Wechsel lohnt oder WordPress für dich die richtige Wahl bleibt.</p>
+  <div class="akt">
+    <a class="btn" href="https://calendly.com/michael-schweikhardt/30min" target="_blank" rel="noopener">Erstgespräch buchen</a>
+    <span class="neben">oder direkt: <a href="mailto:michael@schweikhardt.de">michael@schweikhardt.de</a></span>
+  </div>
+</div></section>
+<footer><div class="wrap foot-i">
+  <div>© 2026 Michael Schweikhardt — Berlin</div>
+  <div><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#" data-cc="show-preferencesModal">Cookie-Einstellungen</a> · <a href="https://www.linkedin.com/in/michael-schweikhardt-1a6b9b8" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></footer>
+</body>
+</html>
